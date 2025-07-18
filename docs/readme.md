@@ -39,5 +39,5 @@ If you are on Windows or macOS, please use a virtual machine (e.g., VirtualBox, 
 **The file evaluation results is original results file evaluated on 2 models for 3 prompts**  
 
 ## AI Usage: 
-I used chatgpt and gemini 2.5 pro for understanding the best evaluation process,code snippets and functions
-Github copilot autofilled the code sometimes 
+* I used chatgpt and gemini 2.5 pro for understanding the best evaluation process,code snippets and functions
+* Github copilot autofilled the code sometimes 
