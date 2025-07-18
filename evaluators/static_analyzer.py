@@ -7,12 +7,27 @@ class AdvancedStaticAnalyzer:
         self.metrics = {}
         self.dependency_graph = {}
 
+    def deep_static_analysis(self, code: str) -> Dict:
+        """Comprehensive static analysis using multiple techniques."""
+        
+        results = {
+            # 'syntax_analysis': self._analyze_syntax_patterns(code),
+            'semantic_analysis': self._analyze_semantic_patterns(code),
+            'control_flow_analysis': self._analyze_control_flow(code),
+            'data_flow_analysis': self._analyze_data_flow(code),
+            'dependency_analysis': self._analyze_dependencies(code),
+            'complexity_metrics': self._calculate_complexity_metrics(code),
+            'kernel_score': self._analyze_kernel_patterns(code),
+            'functionality': self.evaluate_functionality(code)
+        }
+        
+        return results
+
     def evaluate_functionality(self, code: str) -> Dict[str, float]:
         """
         Evaluates the driver's functionality based on implemented operations,
         error handling, and edge case considerations.
         """
-
         essential_ops = [".open", ".release", ".read", ".write"]
         ops_found = sum(1 for op in essential_ops if op in code)
         total_ops = len(essential_ops)
@@ -21,7 +36,6 @@ class AdvancedStaticAnalyzer:
             total_ops += 1
         basic_operations_score = ops_found / total_ops if total_ops > 0 else 0.0
 
-  
         total_returns = len(re.findall(r'\breturn\b', code))
         error_code_returns = len(re.findall(r'\breturn\s+-E[A-Z]+', code))
         error_return_ratio = error_code_returns / total_returns if total_returns > 0 else 0.0
@@ -58,21 +72,6 @@ class AdvancedStaticAnalyzer:
             "edge_cases": round(min(1.0, edge_case_score), 2)
         }
 
-    def deep_static_analysis(self, code: str) -> Dict:
-        """Comprehensive static analysis using multiple techniques."""
-        
-        results = {
-            'syntax_analysis': self._analyze_syntax_patterns(code),
-            'semantic_analysis': self._analyze_semantic_patterns(code),
-            'control_flow_analysis': self._analyze_control_flow(code),
-            'data_flow_analysis': self._analyze_data_flow(code),
-            'dependency_analysis': self._analyze_dependencies(code),
-            'complexity_metrics': self._calculate_complexity_metrics(code),
-            'kernel_specific_analysis': self._analyze_kernel_patterns(code),
-            'functionality': self.evaluate_functionality(code)
-        }
-        
-        return results
 
     def _analyze_syntax_patterns(self, code: str) -> Dict:
         """deep syntax pattern analysis"""
@@ -198,20 +197,25 @@ class AdvancedStaticAnalyzer:
         """calculate various complexity metrics"""
         lines = code.split('\n')
         non_empty_lines = [line for line in lines if line.strip()]
-        
+
+        i = comment_chars = 0
+        while i < len(code):
+            if code[i:i+2] == '//': i+=2; j=code.find('\n',i); comment_chars+=j-i if j!=-1 else len(code)-i; i=j if j!=-1 else len(code)
+            elif code[i:i+2] == '/*': i+=2; j=code.find('*/',i); comment_chars+=j-i if j!=-1 else 0; i=j+2 if j!=-1 else len(code)
+            else: i += 1  
+
         metrics = {
             'lines_of_code': len(non_empty_lines),
-            'comment_lines': len([line for line in lines if line.strip().startswith('//')]),
             'function_count': len(re.findall(r'^\s*(?:static\s+)?\w+\s+\w+\s*\([^)]*\)\s*{', code, re.MULTILINE)),
             'average_function_length': 0,
             'comment_ratio': 0
         }
-        
+
         if metrics['function_count'] > 0:
             metrics['average_function_length'] = metrics['lines_of_code'] / metrics['function_count']
         
         if len(lines) > 0:
-            metrics['comment_ratio'] = metrics['comment_lines'] / len(lines)
+            metrics['comment_ratio'] = comment_chars / len(''.join(lines))
         
         return metrics
     
@@ -243,15 +247,15 @@ class AdvancedStaticAnalyzer:
         driver_score = sum(kernel_patterns['device_driver_patterns'].values()) / len(kernel_patterns['device_driver_patterns']) * 100
         memory_score = sum(kernel_patterns['memory_patterns'].values()) / len(kernel_patterns['memory_patterns']) * 100
         
-        return {
-            'patterns': kernel_patterns,
-            'pattern_scores': {
-                'module_structure_score': module_score,
-                'driver_patterns_score': driver_score,
-                'memory_patterns_score': memory_score
-            },
-            'overall_kernel_score': (module_score + driver_score + memory_score) / 3
-        }
+    
+            
+            # 'pattern_scores': {
+            #     'module_structure_score': module_score,
+            #     'driver_patterns_score': driver_score,
+            #     'memory_patterns_score': memory_score
+            # },
+        overall_kernel_score = (module_score + driver_score + memory_score) / 3
+        return overall_kernel_score
     
     def _calculate_max_nesting_depth(self, code: str) -> int:
         """calculate maximum nesting depth"""
@@ -281,7 +285,7 @@ if __name__ == '__main__':
     static ssize_t my_read(struct file *file, char __user *buf, size_t len, loff_t *off) {
         if (len > 1024) {
             return -EINVAL; // Handle edge case: oversized read
-        }
+        } //alsdfqweiuf
         return 0; 
     }
 
@@ -292,7 +296,8 @@ if __name__ == '__main__':
         }
         kbuf = kmalloc(len, GFP_KERNEL);
         if (!kbuf) {
-            return -ENOMEM; // Handle error: kmalloc failure
+            return -ENOMEM; 
+        // Handle error: kmalloc failure
         }
         kfree(kbuf);
         return len;
@@ -307,5 +312,12 @@ if __name__ == '__main__':
     };
     """
     analyzer = AdvancedStaticAnalyzer()
-    functionality_report = analyzer.evaluate_functionality(sample_driver_code)
-    print(functionality_report)
+    
+    static_analysis_report = analyzer.deep_static_analysis(sample_driver_code)
+
+    print("Static Analysis Report:", static_analysis_report)
+   
+    with open("static_analysis_report.json", "w") as f:
+        import json
+        json.dump(static_analysis_report, f, indent=4) 
+

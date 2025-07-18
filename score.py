@@ -3,28 +3,15 @@ import os
 import sys 
 from dotenv import load_dotenv 
 load_dotenv() 
+import json
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))) 
-from llm.model import GeminiModel 
 from evaluators.prompt_complexity import get_prompt_weight
-
-model = GeminiModel(api_key=os.getenv("API")) 
 
 class total_evaluator:
     
     def __init__(self):
         pass 
-    
-    def generate_code(self,prompt : str):
-        """
-        Generates C code using all available Gemini models for each prompt.
-        Returns a list of dictionaries with the model name and generated code.
-        """
-        print(f"models are generating responses for prompt ") 
-        return model._generate_code_per_prompt(prompt)  
-      
-    
-    
+
     def evaluate_code(self, code: str):
         """
         Evaluates the generated C code using various evaluators.
@@ -33,49 +20,49 @@ class total_evaluator:
         from evaluators.compilation import KernelModuleCompiler
         from evaluators.security import KernelVulnerabilityScanner
         from evaluators.code_quality import HybridCodeQualityAnalyzer
-        
+        from evaluators.static_analyzer import AdvancedStaticAnalyzer 
+
+        static_analyzer = AdvancedStaticAnalyzer() 
         compilation_evaluator = KernelModuleCompiler()
         security_evaluator = KernelVulnerabilityScanner()
         code_quality_analyzer = HybridCodeQualityAnalyzer()
         
-        print("Evaluating code for compilation, security, and quality...")
-        compilation_results = compilation_evaluator.evaluate_compilation(code)  
+    
+        evaluated_results = {
+            'static_analysis_results' : static_analyzer.deep_static_analysis(code),
+            'compilation_results' : compilation_evaluator.evaluate_compilation(code),
+            'security_results' : security_evaluator.evaluate_security(code),
+            'code_quality_results' : code_quality_analyzer.evaluate(code)
+        } 
 
-        print("evaluating security...")
-        security_scores = security_evaluator.evaluate_security(code) 
+        return evaluated_results
 
-        print("evaluating code quality...")
-        quality_scores = code_quality_analyzer.evaluate(code) 
-        
-        print("Evaluation completed.") 
-        return {
-            "compilation": compilation_results,
-            "security": security_scores,
-            "code_quality": quality_scores
-        }  
-
-    def evaluate(self, prompt: str):
+    def evaluate(self, responses: dict):
         """
         Evaluates a list of prompts by generating code and running all evaluations.
         Returns a dictionary with prompt weights, generated code, and evaluation results.
-        """
-        prompt_weight = get_prompt_weight(prompt)
-        responses = self.generate_code(prompt)
-        
-        evaluation_results = {} 
-       
-        for model_name, response in responses.items():
-            code = response['code'] 
-            if not response['success']:
-                print(f"Model {model_name} failed to generate code: {response['error']}")
-                continue
-            evaluation_results[model_name] = self.evaluate_code(code)
+        """ 
+        evaluation_results = {}
+        for prompt in responses.keys():
 
-        return {
-            "prompt_weights": prompt_weight,
-            "generated_code": {model_name: response['code'] for model_name, response in responses.items()},
-            "evaluation_results": evaluation_results
-        } 
+            evaluation_results[prompt] = {}
+            prompt_weight = get_prompt_weight(prompt)
+            evaluation_results[prompt]['prompt_weight'] = prompt_weight
+
+            for model_name, response in responses[prompt].items():
+                evaluation_results[prompt]["Model Name"] = model_name
+                
+                code = response['code'] 
+                if not response['success']:
+                    print(f"Model {model_name} failed to generate code: {response['code']}")
+                    continue 
+                
+                evaluation_results[prompt][f'{model_name} result'] = self.evaluate_code(code)
+
+        return evaluation_results
+    def get_response(self):
+        responses = json.load(open("all_prompt_responses.json", "r")) 
+        return responses 
     
 if __name__ == "__main__": 
     
@@ -83,13 +70,14 @@ if __name__ == "__main__":
 
     sample_prompts = [
         "Write a Linux kernel driver for a simple device.",
-        "Implement a character device driver with basic read/write operations.",
+        "2Implement a character device driver with basic read/write operations.",
         "Create a kernel module that interacts with hardware."
     ]
 
-    results = [] 
-    for prompt in sample_prompts:
-        print(f"Evaluating prompt: {prompt}")
-        result = evaluator.evaluate(prompt)
-        results.append(result) 
+    all_prompt_responses = evaluator.get_response()
+    
+    evaluation_results = evaluator.evaluate(all_prompt_responses) 
 
+    with open("evaluation_results.json", "w") as f:
+        json.dump(evaluation_results, f, indent=4)
+    

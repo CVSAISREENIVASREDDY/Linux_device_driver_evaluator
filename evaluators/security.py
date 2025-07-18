@@ -133,3 +133,7 @@ if __name__ == '__main__':
 
     print("Kernel Driver Security Evaluation:")
     print(security_metrics)
+
+    import json
+    with open("security_report.json", "w") as f:
+        json.dump(security_metrics, f, indent=4)

@@ -184,5 +184,10 @@ if __name__ == '__main__':
     quality_report = quality_analyzer.evaluate(sample_driver_code)
     
     print("Code Quality Report:")
-    print(quality_report)
+    print(quality_report) 
+
+    import json
+    with open("code_quality.json", "w") as f:
+        json.dump(quality_report, f, indent=4)
+
     

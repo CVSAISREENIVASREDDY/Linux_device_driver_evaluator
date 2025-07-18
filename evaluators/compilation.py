@@ -107,5 +107,8 @@ if __name__ == '__main__':
     compiler = KernelModuleCompiler()
     compilation_metrics = compiler.evaluate_compilation(sample_code_with_issues)
     
+    import json 
+    with open("compilation_metrics.json", "w") as f:
+        json.dump(compilation_metrics, f, indent=4)
     print("Compilation Metrics:")       
     print(compilation_metrics)          

@@ -1,0 +1,5 @@
+{
+    "Write a Linux kernel driver for a simple device.": 0.672,
+    "Implement a character device driver with basic read/write operations.": 0.5920000000000001,
+    "Create a kernel module that interacts with hardware.": 0.46399999999999997
+}

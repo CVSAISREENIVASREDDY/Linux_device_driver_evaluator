@@ -1,0 +1,102 @@
+{
+    "semantic_analysis": {
+        "function_call_frequency": {
+            "my_open": 1,
+            "my_release": 1,
+            "my_read": 1,
+            "if": 3,
+            "my_write": 1,
+            "kmalloc": 1,
+            "kfree": 1
+        },
+        "semantic_issues": [],
+        "error_handling_ratio": 0.42857142857142855
+    },
+    "control_flow_analysis": {
+        "control_structures": {
+            "if_statements": 3,
+            "for_loops": 0,
+            "while_loops": 0,
+            "switch_statements": 0,
+            "goto_statements": 0
+        },
+        "cyclomatic_complexity": 4,
+        "max_nesting_depth": 2
+    },
+    "data_flow_analysis": {
+        "variable_definitions": {
+            "kbuf": [
+                22
+            ],
+            "my_fops": [
+                31
+            ],
+            "owner": [
+                32
+            ],
+            "open": [
+                33
+            ],
+            "release": [
+                34
+            ],
+            "read": [
+                35
+            ],
+            "write": [
+                36
+            ]
+        },
+        "variable_usages": {
+            "kbuf": [
+                22,
+                23,
+                27
+            ],
+            "my_fops": [
+                31
+            ],
+            "owner": [
+                32
+            ],
+            "open": [
+                33
+            ],
+            "release": [
+                34
+            ],
+            "read": [
+                35
+            ],
+            "write": [
+                36
+            ]
+        },
+        "unused_variables": []
+    },
+    "dependency_analysis": {
+        "total_includes": 4,
+        "kernel_includes": [
+            "linux/module.h",
+            "linux/fs.h",
+            "linux/uaccess.h",
+            "linux/slab.h"
+        ],
+        "system_includes": [],
+        "external_function_calls": [
+            "kmalloc"
+        ]
+    },
+    "complexity_metrics": {
+        "lines_of_code": 32,
+        "function_count": 4,
+        "average_function_length": 8.0,
+        "comment_ratio": 0.09728718428437792
+    },
+    "kernel_score": 50.0,
+    "functionality": {
+        "basic_operations": 1.0,
+        "error_handling": 0.66,
+        "edge_cases": 0.8
+    }
+} 

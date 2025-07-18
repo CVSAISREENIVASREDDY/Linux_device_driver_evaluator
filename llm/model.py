@@ -32,7 +32,6 @@ class GeminiModel:
 
         for model_name in models: 
             try:
-                # print(f"Attempting code generation with model: {model_name}")
                 model = genai.GenerativeModel(
                     model_name,
                     system_instruction=system_instruction
@@ -44,7 +43,7 @@ class GeminiModel:
                 if response.text:
                     output[model_name] = {
                         "success" : True,
-                        "code" : response,
+                        "code" : response.text,
                     }
                 else:
                     reason = response.candidates[0].finish_reason if response.candidates else "Unknown"
@@ -52,7 +51,7 @@ class GeminiModel:
                     print(error_message)
                     output[model_name] = {
                         "success" : False,
-                        "error" : error_message,
+                        "code" : error_message,
                     }
 
             except Exception as e:
@@ -60,7 +59,7 @@ class GeminiModel:
                 print(error_message)
                 output[model_name] = {
                         "success" : False,
-                        "error" : error_message,
+                        "code" : error_message,
                     }
         
         return output 
