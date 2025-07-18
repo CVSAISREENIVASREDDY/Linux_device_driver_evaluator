@@ -23,8 +23,9 @@ The system is designed as a pipeline that takes a high-level prompt for a Linux 
     API="YOUR_GEMINI_API_KEY"
     ```
 5.  **Finally run:**
-    ```bash
-    python3 score.py
+    ```bash 
+    python get_responses.py
+    python score.py
     ```
 
 ## Note:
@@ -33,3 +34,10 @@ The system is designed as a pipeline that takes a high-level prompt for a Linux 
 
 **Important**: This tool builds Linux kernel modules and must be run in a Linux environment.
 If you are on Windows or macOS, please use a virtual machine (e.g., VirtualBox, Multipass, or WSL 2) to run the code.
+
+**The json results which are existing in the evaluators folder are generated on dummy driver codes given to test the each evaluator individually**
+**The file evaluation results is original results file evaluated on 2 models for 3 prompts**  
+
+## AI Usage: 
+I used chatgpt and gemini 2.5 pro for understanding the best evaluation process,code snippets and functions
+Github copilot autofilled the code sometimes 

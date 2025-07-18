@@ -1,8 +1,10 @@
 # File Functionality
 
-* **`score.py`**: This is the main script that orchestrates the entire evaluation process. It contains the `total_evaluator` class, which:
+* **`get_responses.py`**: 
     * Takes a prompt as input.
     * Calls the `GeminiModel` to generate code.
+    
+* **`score.py`**: This is the main script that orchestrates the entire evaluation process. It contains the `total_evaluator` class, which:
     * Invokes the various evaluators (compilation, security, code quality) on the generated code.
     * Aggregates and returns the final evaluation results.
 
