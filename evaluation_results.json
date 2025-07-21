@@ -3,112 +3,932 @@
         "prompt_weight": 0.672,
         "Model Name": "gemini-2.5-flash",
         "gemini-1.5-flash result": {
+            "clang_analysis_results": {
+                "style_compliance": 1.0,
+                "documentation": 0.03,
+                "maintainability": 0.7
+            },
             "static_analysis_results": {
                 "semantic_analysis": {
                     "function_call_frequency": {
-                        "simple_device_open": 1,
-                        "simple_device_release": 1,
-                        "simple_device_read": 1,
-                        "simple_device_write": 1,
-                        "simple_device_init": 1,
+                        "simple_counter_open": 1,
+                        "printk": 9,
+                        "simple_counter_release": 1,
+                        "simple_counter_read": 1,
+                        "if": 6,
+                        "copy_to_user": 1,
+                        "sizeof": 2,
+                        "simple_counter_init": 1,
                         "alloc_chrdev_region": 1,
-                        "if": 3,
-                        "printk": 3,
+                        "MAJOR": 1,
                         "cdev_init": 1,
                         "cdev_add": 1,
-                        "unregister_chrdev_region": 3,
                         "class_create": 1,
-                        "cdev_del": 2,
-                        "PTR_ERR": 1,
                         "device_create": 1,
-                        "simple_device_exit": 1,
+                        "cdev_del": 2,
+                        "unregister_chrdev_region": 2,
+                        "simple_counter_exit": 1,
                         "device_destroy": 1,
                         "class_destroy": 1,
                         "module_init": 1,
                         "module_exit": 1,
                         "MODULE_LICENSE": 1,
                         "MODULE_AUTHOR": 1,
-                        "MODULE_DESCRIPTION": 1
+                        "MODULE_DESCRIPTION": 1,
+                        "system": 1
                     },
                     "semantic_issues": [],
-                    "error_handling_ratio": 0.0
+                    "error_handling_ratio": 0.1111111111111111
                 },
                 "control_flow_analysis": {
                     "control_structures": {
-                        "if_statements": 3,
+                        "if_statements": 6,
+                        "for_loops": 0,
+                        "while_loops": 0,
+                        "switch_statements": 0,
+                        "goto_statements": 2
+                    },
+                    "cyclomatic_complexity": 7,
+                    "max_nesting_depth": 2
+                },
+                "data_flow_analysis": {
+                    "variable_definitions": {
+                        "counter": [
+                            21
+                        ],
+                        "val": [
+                            47
+                        ],
+                        "ret": [
+                            49,
+                            70,
+                            80
+                        ],
+                        "simple_counter_fops": [
+                            59
+                        ],
+                        "owner": [
+                            60
+                        ],
+                        "open": [
+                            61
+                        ],
+                        "release": [
+                            62
+                        ],
+                        "read": [
+                            63
+                        ],
+                        "major_number": [
+                            75
+                        ],
+                        "cls": [
+                            86
+                        ]
+                    },
+                    "variable_usages": {
+                        "counter": [
+                            21,
+                            24,
+                            25,
+                            29,
+                            30,
+                            34,
+                            39,
+                            42,
+                            43,
+                            47,
+                            51,
+                            59,
+                            61,
+                            62,
+                            63,
+                            67,
+                            72,
+                            76,
+                            78,
+                            82,
+                            88,
+                            105,
+                            110,
+                            114,
+                            115,
+                            119,
+                            122
+                        ],
+                        "val": [
+                            47,
+                            49,
+                            55,
+                            56
+                        ],
+                        "ret": [
+                            49,
+                            50,
+                            51,
+                            52,
+                            56,
+                            68,
+                            70,
+                            71,
+                            72,
+                            73,
+                            80,
+                            81,
+                            82,
+                            95,
+                            101
+                        ],
+                        "simple_counter_fops": [
+                            59,
+                            78
+                        ],
+                        "owner": [
+                            60
+                        ],
+                        "open": [
+                            61
+                        ],
+                        "release": [
+                            62
+                        ],
+                        "read": [
+                            63
+                        ],
+                        "major_number": [
+                            75,
+                            76
+                        ],
+                        "cls": [
+                            86,
+                            87,
+                            88,
+                            92,
+                            106,
+                            107
+                        ]
+                    },
+                    "unused_variables": []
+                },
+                "dependency_analysis": {
+                    "total_includes": 7,
+                    "kernel_includes": [
+                        "linux/module.h",
+                        "linux/kernel.h",
+                        "linux/fs.h",
+                        "linux/uaccess.h",
+                        "linux/cdev.h",
+                        "linux/device.h",
+                        "linux/slab.h"
+                    ],
+                    "system_includes": [],
+                    "external_function_calls": [
+                        "printk",
+                        "printk",
+                        "printk",
+                        "printk",
+                        "printk",
+                        "printk",
+                        "printk",
+                        "printk",
+                        "printk"
+                    ]
+                },
+                "complexity_metrics": {
+                    "lines_of_code": 91,
+                    "function_count": 3,
+                    "average_function_length": 30.333333333333332,
+                    "comment_ratio": 0.003977272727272727
+                },
+                "kernel_score": 68.33333333333333,
+                "functionality": {
+                    "basic_operations": 0.8,
+                    "error_handling": 0.47,
+                    "edge_cases": 0.3
+                }
+            },
+            "compilation_results": {
+                "success_rate": 0.0,
+                "warnings_count": 0,
+                "errors_count": 1,
+                "raw_output": "An unexpected error occurred: [WinError 2] The system cannot find the file specified"
+            },
+            "security_results": {
+                "kernel_memory_safety": 0.35,
+                "kernel_concurrency": 1.0,
+                "kernel_api_misuse": 1.0
+            }
+        },
+        "gemini-2.5-flash result": {
+            "clang_analysis_results": {
+                "style_compliance": 1.0,
+                "documentation": 1.0,
+                "maintainability": 1.0
+            },
+            "static_analysis_results": {
+                "semantic_analysis": {
+                    "function_call_frequency": {
+                        "style": 1,
+                        "offset": 1,
+                        "number": 1,
+                        "mydev_open": 2,
+                        "mydev_release": 2,
+                        "mydev_read": 2,
+                        "mydev_write": 2,
+                        "mydev_llseek": 2,
+                        "cdev": 1,
+                        "container_of": 1,
+                        "open": 1,
+                        "if": 20,
+                        "printk": 24,
+                        "MINOR": 3,
+                        "mutex_unlock": 7,
+                        "mutex": 1,
+                        "switch": 1,
+                        "file": 1,
+                        "mydev_init": 1,
+                        "alloc_chrdev_region": 1,
+                        "class": 1,
+                        "class_create": 1,
+                        "PTR_ERR": 2,
+                        "kmalloc": 2,
+                        "memset": 2,
+                        "mutex_init": 1,
+                        "cdev_init": 1,
+                        "cdev_add": 1,
+                        "dev": 1,
+                        "cdev_del": 2,
+                        "kfree": 4,
+                        "class_destroy": 2,
+                        "unregister_chrdev_region": 2,
+                        "mydev_exit": 1,
+                        "device_destroy": 1,
+                        "module_init": 1,
+                        "module_exit": 1,
+                        "MODULE_LICENSE": 1,
+                        "MODULE_AUTHOR": 1,
+                        "MODULE_DESCRIPTION": 1,
+                        "MODULE_VERSION": 1,
+                        "source": 1,
+                        "device": 1,
+                        "opened": 2,
+                        "closed": 2,
+                        "data": 1,
+                        "strategies": 1,
+                        "control": 1
+                    },
+                    "semantic_issues": [],
+                    "error_handling_ratio": 0.4375
+                },
+                "control_flow_analysis": {
+                    "control_structures": {
+                        "if_statements": 20,
+                        "for_loops": 0,
+                        "while_loops": 0,
+                        "switch_statements": 1,
+                        "goto_statements": 9
+                    },
+                    "cyclomatic_complexity": 22,
+                    "max_nesting_depth": 3
+                },
+                "data_flow_analysis": {
+                    "variable_definitions": {
+                        "mydev_fops": [
+                            58
+                        ],
+                        "owner": [
+                            59,
+                            294
+                        ],
+                        "open": [
+                            60
+                        ],
+                        "release": [
+                            61
+                        ],
+                        "read": [
+                            62
+                        ],
+                        "write": [
+                            63
+                        ],
+                        "llseek": [
+                            64
+                        ],
+                        "dev_data": [
+                            75,
+                            102,
+                            121,
+                            163,
+                            207,
+                            271,
+                            333
+                        ],
+                        "private_data": [
+                            78,
+                            297
+                        ],
+                        "current_offset": [
+                            83
+                        ],
+                        "bytes_read": [
+                            122,
+                            143,
+                            148
+                        ],
+                        "offset": [
+                            123,
+                            165
+                        ],
+                        "count": [
+                            137,
+                            181
+                        ],
+                        "ppos": [
+                            149,
+                            193
+                        ],
+                        "bytes_written": [
+                            164,
+                            187,
+                            192
+                        ],
+                        "new_pos": [
+                            216,
+                            219,
+                            222
+                        ],
+                        "f_pos": [
+                            237
+                        ],
+                        "ret": [
+                            254,
+                            266,
+                            274,
+                            283,
+                            299,
+                            308
+                        ],
+                        "mydev_class": [
+                            263
+                        ],
+                        "buffer": [
+                            280
+                        ],
+                        "buffer_size": [
+                            286
+                        ],
+                        "M": [
+                            384,
+                            387
+                        ],
+                        "if": [
+                            457
+                        ]
+                    },
+                    "variable_usages": {
+                        "mydev_fops": [
+                            58,
+                            293
+                        ],
+                        "owner": [
+                            59,
+                            294
+                        ],
+                        "open": [
+                            60,
+                            68,
+                            70,
+                            80,
+                            81,
+                            87,
+                            91,
+                            296,
+                            432,
+                            442,
+                            477
+                        ],
+                        "release": [
+                            61,
+                            98,
+                            100,
+                            104,
+                            106
+                        ],
+                        "read": [
+                            62,
+                            81,
+                            117,
+                            119,
+                            122,
+                            129,
+                            132,
+                            135,
+                            143,
+                            148,
+                            151,
+                            155,
+                            454,
+                            461,
+                            476,
+                            477,
+                            480
+                        ],
+                        "write": [
+                            63,
+                            159,
+                            161,
+                            171,
+                            174,
+                            177,
+                            179,
+                            446,
+                            476,
+                            477
+                        ],
+                        "llseek": [
+                            64,
+                            203,
+                            205
+                        ],
+                        "dev_data": [
+                            75,
+                            78,
+                            83,
+                            86,
+                            92,
+                            102,
+                            105,
+                            111,
+                            121,
+                            125,
+                            130,
+                            136,
+                            137,
+                            141,
+                            154,
+                            163,
+                            167,
+                            172,
+                            173,
+                            178,
+                            180,
+                            181,
+                            185,
+                            198,
+                            207,
+                            210,
+                            222,
+                            225,
+                            230,
+                            232,
+                            233,
+                            239,
+                            249,
+                            271,
+                            272,
+                            277,
+                            280,
+                            281,
+                            284,
+                            286,
+                            287,
+                            290,
+                            297,
+                            318,
+                            319,
+                            320,
+                            333,
+                            347,
+                            348,
+                            349,
+                            351,
+                            476
+                        ],
+                        "private_data": [
+                            78,
+                            102,
+                            121,
+                            163,
+                            207,
+                            297,
+                            333
+                        ],
+                        "current_offset": [
+                            83
+                        ],
+                        "bytes_read": [
+                            122,
+                            143,
+                            148,
+                            151,
+                            155
+                        ],
+                        "offset": [
+                            123,
+                            130,
+                            136,
+                            137,
+                            141,
+                            147,
+                            149,
+                            151,
+                            165,
+                            172,
+                            173,
+                            178,
+                            180,
+                            181,
+                            185,
+                            191,
+                            193,
+                            195,
+                            205,
+                            216,
+                            219,
+                            222,
+                            231,
+                            232,
+                            433,
+                            443,
+                            461
+                        ],
+                        "count": [
+                            137,
+                            141,
+                            147,
+                            148,
+                            161,
+                            178,
+                            180,
+                            181,
+                            185,
+                            191,
+                            192
+                        ],
+                        "ppos": [
+                            149,
+                            151,
+                            161,
+                            165,
+                            193,
+                            195,
+                            477
+                        ],
+                        "bytes_written": [
+                            164,
+                            187,
+                            192,
+                            195,
+                            199
+                        ],
+                        "new_pos": [
+                            216,
+                            219,
+                            222,
+                            230,
+                            237,
+                            238,
+                            240
+                        ],
+                        "f_pos": [
+                            237,
+                            477
+                        ],
+                        "ret": [
+                            254,
+                            255,
+                            257,
+                            266,
+                            274,
+                            283,
+                            296,
+                            299,
+                            300,
+                            308,
+                            313,
+                            325,
+                            480
+                        ],
+                        "mydev_class": [
+                            263,
+                            264,
+                            266,
+                            306,
+                            308,
+                            322,
+                            338,
+                            344
+                        ],
+                        "buffer": [
+                            280,
+                            281,
+                            282,
+                            286,
+                            287,
+                            302,
+                            317,
+                            318,
+                            346,
+                            348,
+                            349,
+                            448,
+                            451,
+                            452,
+                            476,
+                            478,
+                            479,
+                            480
+                        ],
+                        "buffer_size": [
+                            286
+                        ],
+                        "M": [
+                            396,
+                            415,
+                            423,
+                            478
+                        ],
+                        "if": [
+                            475,
+                            477,
+                            478,
+                            480
+                        ]
+                    },
+                    "unused_variables": []
+                },
+                "dependency_analysis": {
+                    "total_includes": 9,
+                    "kernel_includes": [
+                        "linux/module.h",
+                        "linux/kernel.h",
+                        "linux/init.h",
+                        "linux/fs.h",
+                        "linux/cdev.h",
+                        "linux/device.h",
+                        "linux/slab.h",
+                        "linux/uaccess.h",
+                        "linux/mutex.h"
+                    ],
+                    "system_includes": [],
+                    "external_function_calls": [
+                        "printk",
+                        "printk",
+                        "printk",
+                        "printk",
+                        "printk",
+                        "printk",
+                        "printk",
+                        "printk",
+                        "printk",
+                        "copy_from_user",
+                        "printk",
+                        "printk",
+                        "printk",
+                        "printk",
+                        "printk",
+                        "printk",
+                        "printk",
+                        "printk",
+                        "kmalloc",
+                        "printk",
+                        "kmalloc",
+                        "printk",
+                        "printk",
+                        "printk",
+                        "printk",
+                        "printk",
+                        "printk"
+                    ]
+                },
+                "complexity_metrics": {
+                    "lines_of_code": 397,
+                    "function_count": 5,
+                    "average_function_length": 79.4,
+                    "comment_ratio": 0.17869373776908024
+                },
+                "kernel_score": 100.0,
+                "functionality": {
+                    "basic_operations": 1.0,
+                    "error_handling": 0.46,
+                    "edge_cases": 0.6
+                }
+            },
+            "compilation_results": {
+                "success_rate": 0.0,
+                "warnings_count": 0,
+                "errors_count": 1,
+                "raw_output": "An unexpected error occurred: [WinError 2] The system cannot find the file specified"
+            },
+            "security_results": {
+                "kernel_memory_safety": 0.0,
+                "kernel_concurrency": 1.0,
+                "kernel_api_misuse": 1.0
+            }
+        }
+    },
+    "2Implement a character device driver with basic read/write operations.": {
+        "prompt_weight": 0.47200000000000003,
+        "Model Name": "gemini-2.5-flash",
+        "gemini-1.5-flash result": {
+            "clang_analysis_results": {
+                "style_compliance": 0.9,
+                "documentation": 0.2,
+                "maintainability": 0.7
+            },
+            "static_analysis_results": {
+                "semantic_analysis": {
+                    "function_call_frequency": {
+                        "mychardev_open": 1,
+                        "pr_info": 4,
+                        "mychardev_release": 1,
+                        "mychardev_read": 1,
+                        "min": 4,
+                        "if": 8,
+                        "pr_err": 6,
+                        "mychardev_write": 1,
+                        "mychardev_init": 1,
+                        "alloc_chrdev_region": 1,
+                        "MAJOR": 1,
+                        "kmalloc": 1,
+                        "unregister_chrdev_region": 4,
+                        "cdev_init": 1,
+                        "cdev_add": 1,
+                        "kfree": 3,
+                        "class_create": 1,
+                        "cdev_del": 2,
+                        "PTR_ERR": 1,
+                        "device_create": 1,
+                        "mychardev_exit": 1,
+                        "MKDEV": 1,
+                        "device_destroy": 1,
+                        "class_unregister": 1,
+                        "class_destroy": 1,
+                        "module_init": 1,
+                        "module_exit": 1,
+                        "MODULE_LICENSE": 1,
+                        "MODULE_AUTHOR": 1,
+                        "MODULE_DESCRIPTION": 1,
+                        "system": 1
+                    },
+                    "semantic_issues": [],
+                    "error_handling_ratio": 0.23076923076923078
+                },
+                "control_flow_analysis": {
+                    "control_structures": {
+                        "if_statements": 8,
                         "for_loops": 0,
                         "while_loops": 0,
                         "switch_statements": 0,
                         "goto_statements": 0
                     },
-                    "cyclomatic_complexity": 4,
+                    "cyclomatic_complexity": 9,
                     "max_nesting_depth": 2
                 },
                 "data_flow_analysis": {
                     "variable_definitions": {
-                        "simple_device_fops": [
-                            38
+                        "mychardev_class": [
+                            14,
+                            92
                         ],
-                        "owner": [
-                            39
+                        "buffer_size": [
+                            17
                         ],
-                        "open": [
-                            40
+                        "bytes_to_read": [
+                            30,
+                            31
                         ],
-                        "release": [
-                            41
+                        "bytes_to_write": [
+                            44,
+                            45
                         ],
-                        "read": [
-                            42
-                        ],
-                        "write": [
-                            43
-                        ],
-                        "ret": [
-                            50,
+                        "mychardev_fops": [
                             57
                         ],
-                        "cls": [
-                            64
+                        "owner": [
+                            58
+                        ],
+                        "open": [
+                            59
+                        ],
+                        "release": [
+                            60
+                        ],
+                        "read": [
+                            61
+                        ],
+                        "write": [
+                            62
+                        ],
+                        "ret": [
+                            69,
+                            84
+                        ],
+                        "major_num": [
+                            74
+                        ],
+                        "buffer": [
+                            76
+                        ],
+                        "dev": [
+                            107
                         ]
                     },
                     "variable_usages": {
-                        "simple_device_fops": [
-                            38,
-                            56
+                        "mychardev_class": [
+                            14,
+                            92,
+                            93,
+                            98,
+                            101,
+                            108,
+                            109,
+                            110
                         ],
-                        "owner": [
+                        "buffer_size": [
+                            17,
+                            30,
+                            44,
+                            76,
+                            130
+                        ],
+                        "bytes_to_read": [
+                            30,
+                            31,
+                            33,
+                            38,
                             39
                         ],
+                        "bytes_to_write": [
+                            44,
+                            45,
+                            47,
+                            52,
+                            53
+                        ],
+                        "mychardev_fops": [
+                            57,
+                            83
+                        ],
+                        "owner": [
+                            58
+                        ],
                         "open": [
-                            40
+                            59
                         ],
                         "release": [
-                            41
+                            60
                         ],
                         "read": [
-                            42
+                            61,
+                            132,
+                            133
                         ],
                         "write": [
-                            43
+                            62,
+                            132,
+                            133
                         ],
                         "ret": [
-                            50,
-                            51,
-                            53,
-                            57,
-                            58,
-                            61,
                             69,
-                            74
-                        ],
-                        "cls": [
-                            64,
-                            65,
-                            69,
+                            70,
                             72,
-                            79,
-                            80
+                            80,
+                            84,
+                            85,
+                            89,
+                            98,
+                            103,
+                            127
+                        ],
+                        "major_num": [
+                            74,
+                            102,
+                            107
+                        ],
+                        "buffer": [
+                            76,
+                            77,
+                            78,
+                            87,
+                            96,
+                            112,
+                            130,
+                            132
+                        ],
+                        "dev": [
+                            107,
+                            108,
+                            109,
+                            110,
+                            111,
+                            113,
+                            114,
+                            117,
+                            118,
+                            122,
+                            135
                         ]
                     },
                     "unused_variables": []
@@ -126,77 +946,93 @@
                     ],
                     "system_includes": [],
                     "external_function_calls": [
-                        "printk",
-                        "printk",
-                        "printk"
+                        "copy_from_user",
+                        "kmalloc"
                     ]
                 },
                 "complexity_metrics": {
-                    "lines_of_code": 74,
+                    "lines_of_code": 110,
                     "function_count": 4,
-                    "average_function_length": 18.5,
-                    "comment_ratio": 0.0
+                    "average_function_length": 27.5,
+                    "comment_ratio": 0.013480116827679174
                 },
-                "kernel_score": 66.66666666666667,
+                "kernel_score": 100.0,
                 "functionality": {
                     "basic_operations": 1.0,
-                    "error_handling": 0.4,
-                    "edge_cases": 0.0
+                    "error_handling": 0.54,
+                    "edge_cases": 0.3
                 }
             },
             "compilation_results": {
-                "success_rate": 1.0,
+                "success_rate": 0.0,
                 "warnings_count": 0,
-                "errors_count": 0,
+                "errors_count": 1,
                 "raw_output": "An unexpected error occurred: [WinError 2] The system cannot find the file specified"
             },
             "security_results": {
-                "kernel_memory_safety": 0.75,
+                "kernel_memory_safety": 0.0,
                 "kernel_concurrency": 1.0,
                 "kernel_api_misuse": 1.0
-            },
-            "code_quality_results": {
-                "style_compliance": 1.0,
-                "documentation": 0.0,
-                "maintainability": 1.0
             }
         },
         "gemini-2.5-flash result": {
+            "clang_analysis_results": {
+                "style_compliance": 1.0,
+                "documentation": 1.0,
+                "maintainability": 0.7
+            },
             "static_analysis_results": {
                 "semantic_analysis": {
                     "function_call_frequency": {
+                        "MODULE_LICENSE": 1,
+                        "MODULE_AUTHOR": 1,
+                        "MODULE_DESCRIPTION": 1,
+                        "MODULE_VERSION": 1,
                         "DEFINE_MUTEX": 1,
-                        "simple_char_dev_open": 1,
+                        "mychar_open": 2,
+                        "mychar_release": 2,
+                        "mychar_read": 2,
+                        "mychar_write": 2,
+                        "pr_info": 9,
                         "if": 12,
-                        "pr_err": 5,
-                        "pr_info": 4,
-                        "simple_char_dev_release": 1,
-                        "module_put": 1,
-                        "simple_char_dev_read": 1,
+                        "data": 1,
+                        "beginning": 1,
+                        "pr_debug": 1,
+                        "mutex_unlock": 6,
                         "min": 2,
-                        "mutex_unlock": 2,
-                        "simple_char_dev_write": 1,
-                        "simple_char_dev_init": 1,
+                        "copy_to_user": 1,
+                        "pr_err": 7,
+                        "memmove": 1,
+                        "position": 1,
+                        "written": 1,
+                        "pr_warn": 1,
+                        "copy_from_user": 1,
+                        "mychar_init": 1,
                         "alloc_chrdev_region": 1,
+                        "MINOR": 1,
                         "cdev_init": 1,
                         "cdev_add": 1,
                         "class_create": 1,
                         "PTR_ERR": 2,
-                        "device_create": 1,
-                        "MINOR": 1,
+                        "dev": 1,
+                        "kmalloc": 1,
+                        "device_destroy": 2,
                         "class_destroy": 2,
                         "cdev_del": 2,
                         "unregister_chrdev_region": 2,
-                        "simple_char_dev_exit": 1,
-                        "device_destroy": 1,
+                        "mychar_exit": 1,
+                        "kfree": 1,
                         "module_init": 1,
                         "module_exit": 1,
-                        "MODULE_LICENSE": 1,
-                        "MODULE_AUTHOR": 1,
-                        "MODULE_DESCRIPTION": 1
+                        "ifeq": 1,
+                        "bytes": 2,
+                        "size": 1,
+                        "behavior": 1,
+                        "functions": 1,
+                        "conditional": 1
                     },
                     "semantic_issues": [],
-                    "error_handling_ratio": 0.3
+                    "error_handling_ratio": 0.3333333333333333
                 },
                 "control_flow_analysis": {
                     "control_structures": {
@@ -204,140 +1040,243 @@
                         "for_loops": 0,
                         "while_loops": 0,
                         "switch_statements": 0,
-                        "goto_statements": 7
+                        "goto_statements": 4
                     },
                     "cyclomatic_complexity": 13,
                     "max_nesting_depth": 2
                 },
                 "data_flow_analysis": {
                     "variable_definitions": {
-                        "retval": [
-                            41,
-                            54,
-                            59,
-                            68,
-                            75,
-                            82,
-                            90
+                        "g_mychar_data_len": [
+                            31,
+                            87,
+                            214
                         ],
-                        "bytes_to_read": [
-                            51
-                        ],
-                        "bytes_to_write": [
-                            79
-                        ],
-                        "simple_char_dev_buffer_len": [
-                            88,
-                            139
-                        ],
-                        "simple_char_dev_fops": [
-                            97
+                        "mychar_fops": [
+                            41
                         ],
                         "owner": [
-                            98,
-                            117
+                            42,
+                            182
                         ],
                         "open": [
-                            99
+                            43
                         ],
                         "release": [
-                            100
+                            44
                         ],
                         "read": [
-                            101
+                            45
                         ],
                         "write": [
-                            102
+                            46
+                        ],
+                        "bytes_to_read": [
+                            72,
+                            94
+                        ],
+                        "bytes_not_copied": [
+                            97,
+                            144
+                        ],
+                        "bytes_to_write": [
+                            123,
+                            141
+                        ],
+                        "space_available": [
+                            132,
+                            134
                         ],
                         "ret": [
-                            110,
-                            119,
-                            128,
-                            135
+                            172,
+                            185,
+                            194,
+                            202,
+                            211
                         ],
-                        "simple_char_dev_class": [
-                            125
+                        "g_mychar_class": [
+                            192
                         ],
-                        "dev_ret": [
-                            132
+                        "g_mychar_buffer": [
+                            208,
+                            250
+                        ],
+                        "M": [
+                            275,
+                            278,
+                            281
                         ]
                     },
                     "variable_usages": {
-                        "retval": [
-                            41,
-                            54,
-                            59,
-                            63,
-                            68,
-                            75,
-                            82,
-                            90,
-                            94
-                        ],
-                        "bytes_to_read": [
-                            51,
-                            53,
-                            58,
-                            59
-                        ],
-                        "bytes_to_write": [
-                            79,
-                            81,
-                            86,
-                            90
-                        ],
-                        "simple_char_dev_buffer_len": [
-                            88,
-                            139
-                        ],
-                        "simple_char_dev_fops": [
-                            97,
-                            116
-                        ],
-                        "owner": [
-                            98,
-                            117
-                        ],
-                        "open": [
-                            99
-                        ],
-                        "release": [
-                            100
-                        ],
-                        "read": [
-                            101
-                        ],
-                        "write": [
-                            102
-                        ],
-                        "ret": [
-                            110,
-                            111,
-                            112,
-                            113,
-                            119,
-                            120,
-                            121,
-                            128,
-                            132,
-                            133,
-                            135,
-                            141,
-                            149
-                        ],
-                        "simple_char_dev_class": [
-                            125,
-                            126,
-                            128,
+                        "g_mychar_data_len": [
+                            31,
+                            87,
+                            94,
+                            106,
+                            107,
+                            109,
                             132,
                             144,
-                            154,
-                            155
+                            152,
+                            214
                         ],
-                        "dev_ret": [
+                        "mychar_fops": [
+                            41,
+                            181
+                        ],
+                        "owner": [
+                            42,
+                            182,
+                            378
+                        ],
+                        "open": [
+                            43,
+                            51,
+                            52,
+                            54,
+                            57,
+                            64,
+                            378
+                        ],
+                        "release": [
+                            44,
+                            61,
+                            62,
+                            378
+                        ],
+                        "read": [
+                            45,
+                            69,
+                            70,
+                            72,
+                            75,
+                            79,
+                            80,
+                            83,
+                            84,
+                            88,
+                            93,
+                            94,
+                            97,
+                            99,
+                            106,
+                            107,
+                            109,
+                            112,
+                            114,
+                            117,
+                            343,
+                            347,
+                            352,
+                            378,
+                            386,
+                            391,
+                            392
+                        ],
+                        "write": [
+                            46,
+                            120,
+                            121,
+                            123,
+                            126,
+                            135,
+                            140,
+                            141,
+                            144,
+                            146,
+                            152,
+                            155,
+                            157,
+                            160,
+                            333,
+                            378,
+                            386,
+                            391,
+                            392
+                        ],
+                        "bytes_to_read": [
+                            72,
+                            93,
+                            94,
+                            97,
+                            106,
+                            107,
+                            109,
+                            112,
+                            114,
+                            117
+                        ],
+                        "bytes_not_copied": [
+                            97,
+                            98,
+                            100,
+                            124,
+                            144,
+                            145,
+                            147
+                        ],
+                        "bytes_to_write": [
+                            123,
+                            140,
+                            141,
+                            144,
+                            152,
+                            155,
+                            157,
+                            160
+                        ],
+                        "space_available": [
                             132,
-                            133,
-                            135
+                            134,
+                            141
+                        ],
+                        "ret": [
+                            172,
+                            173,
+                            174,
+                            175,
+                            185,
+                            186,
+                            187,
+                            194,
+                            195,
+                            202,
+                            203,
+                            211,
+                            217,
+                            228,
+                            380,
+                            389,
+                            392
+                        ],
+                        "g_mychar_class": [
+                            192,
+                            193,
+                            194,
+                            201,
+                            202,
+                            221,
+                            223,
+                            237,
+                            240
+                        ],
+                        "g_mychar_buffer": [
+                            208,
+                            209,
+                            249,
+                            250,
+                            386
+                        ],
+                        "M": [
+                            297,
+                            319,
+                            365,
+                            371,
+                            372,
+                            378,
+                            382,
+                            387,
+                            390
                         ]
                     },
                     "unused_variables": []
@@ -356,196 +1295,218 @@
                     ],
                     "system_includes": [],
                     "external_function_calls": [
-                        "copy_from_user"
+                        "copy_from_user",
+                        "kmalloc"
                     ]
                 },
                 "complexity_metrics": {
-                    "lines_of_code": 134,
+                    "lines_of_code": 325,
                     "function_count": 4,
-                    "average_function_length": 33.5,
-                    "comment_ratio": 0.025272432181776026
+                    "average_function_length": 81.25,
+                    "comment_ratio": 0.24603787024396034
                 },
-                "kernel_score": 83.33333333333333,
+                "kernel_score": 100.0,
                 "functionality": {
                     "basic_operations": 1.0,
-                    "error_handling": 0.58,
-                    "edge_cases": 0.6
+                    "error_handling": 0.4,
+                    "edge_cases": 0.8
                 }
             },
             "compilation_results": {
-                "success_rate": 1.0,
+                "success_rate": 0.0,
                 "warnings_count": 0,
-                "errors_count": 0,
+                "errors_count": 1,
                 "raw_output": "An unexpected error occurred: [WinError 2] The system cannot find the file specified"
             },
             "security_results": {
-                "kernel_memory_safety": 0.2,
+                "kernel_memory_safety": 0.0,
                 "kernel_concurrency": 1.0,
                 "kernel_api_misuse": 1.0
-            },
-            "code_quality_results": {
-                "style_compliance": 1.0,
-                "documentation": 0.04,
-                "maintainability": 1.0
             }
         }
     },
-    "2Implement a character device driver with basic read/write operations.": {
-        "prompt_weight": 0.47200000000000003,
+    "Create a kernel module that interacts with hardware.": {
+        "prompt_weight": 0.46399999999999997,
         "Model Name": "gemini-2.5-flash",
         "gemini-1.5-flash result": {
+            "clang_analysis_results": {
+                "style_compliance": 1.0,
+                "documentation": 0.13,
+                "maintainability": 0.7
+            },
             "static_analysis_results": {
                 "semantic_analysis": {
                     "function_call_frequency": {
-                        "chardev_open": 1,
-                        "chardev_release": 1,
-                        "chardev_read": 1,
-                        "min": 2,
-                        "if": 8,
-                        "chardev_write": 1,
-                        "chardev_init": 1,
-                        "alloc_chrdev_region": 1,
-                        "printk": 6,
-                        "kmalloc": 1,
-                        "unregister_chrdev_region": 4,
-                        "cdev_init": 1,
-                        "cdev_add": 1,
-                        "kfree": 3,
-                        "class_create": 1,
-                        "cdev_del": 2,
-                        "PTR_ERR": 1,
-                        "device_create": 1,
-                        "chardev_exit": 1,
-                        "device_destroy": 1,
-                        "class_destroy": 1,
-                        "module_init": 1,
-                        "module_exit": 1,
                         "MODULE_LICENSE": 1,
                         "MODULE_AUTHOR": 1,
-                        "MODULE_DESCRIPTION": 1
+                        "MODULE_DESCRIPTION": 1,
+                        "simulated_hw_open": 1,
+                        "pr_info": 5,
+                        "simulated_hw_release": 1,
+                        "simulated_hw_read": 1,
+                        "if": 9,
+                        "copy_to_user": 1,
+                        "pr_err": 6,
+                        "sizeof": 2,
+                        "simulated_hw_write": 1,
+                        "copy_from_user": 1,
+                        "simulated_hw_init": 1,
+                        "alloc_chrdev_region": 1,
+                        "MAJOR": 1,
+                        "cdev_init": 1,
+                        "cdev_add": 1,
+                        "class_create": 1,
+                        "PTR_ERR": 1,
+                        "class_destroy": 2,
+                        "cdev_del": 2,
+                        "unregister_chrdev_region": 2,
+                        "simulated_hw_exit": 1,
+                        "device_destroy": 1,
+                        "module_init": 1,
+                        "module_exit": 1,
+                        "system": 1
                     },
                     "semantic_issues": [],
-                    "error_handling_ratio": 0.23076923076923078
+                    "error_handling_ratio": 0.3333333333333333
                 },
                 "control_flow_analysis": {
                     "control_structures": {
-                        "if_statements": 8,
+                        "if_statements": 9,
                         "for_loops": 0,
                         "while_loops": 0,
                         "switch_statements": 0,
-                        "goto_statements": 0
+                        "goto_statements": 3
                     },
-                    "cyclomatic_complexity": 9,
+                    "cyclomatic_complexity": 10,
                     "max_nesting_depth": 2
                 },
                 "data_flow_analysis": {
                     "variable_definitions": {
-                        "bytes_to_read": [
+                        "hw_register": [
                             27,
-                            28
+                            75
                         ],
-                        "bytes_to_write": [
-                            35,
-                            36
-                        ],
-                        "chardev_fops": [
-                            43
-                        ],
-                        "owner": [
-                            44
-                        ],
-                        "open": [
-                            45
-                        ],
-                        "release": [
-                            46
-                        ],
-                        "read": [
-                            47
-                        ],
-                        "write": [
-                            48
+                        "value": [
+                            41
                         ],
                         "ret": [
-                            53,
-                            65
+                            51,
+                            70,
+                            94,
+                            103,
+                            112,
+                            118
                         ],
-                        "buffer": [
-                            58
+                        "fops": [
+                            82
                         ],
-                        "cls": [
-                            72
+                        "owner": [
+                            83
+                        ],
+                        "open": [
+                            84
+                        ],
+                        "release": [
+                            85
+                        ],
+                        "read": [
+                            86
+                        ],
+                        "write": [
+                            87
+                        ],
+                        "major_num": [
+                            99
+                        ],
+                        "class": [
+                            109
                         ]
                     },
                     "variable_usages": {
-                        "bytes_to_read": [
+                        "hw_register": [
                             27,
-                            28,
-                            29,
-                            30,
-                            31
+                            41,
+                            75,
+                            76
                         ],
-                        "bytes_to_write": [
-                            35,
-                            36,
-                            37,
-                            38,
-                            39
-                        ],
-                        "chardev_fops": [
-                            43,
-                            64
-                        ],
-                        "owner": [
-                            44
-                        ],
-                        "open": [
-                            45
-                        ],
-                        "release": [
-                            46
-                        ],
-                        "read": [
-                            47
-                        ],
-                        "write": [
-                            48
+                        "value": [
+                            41,
+                            47,
+                            51,
+                            56,
+                            57,
+                            64,
+                            70,
+                            75,
+                            76
                         ],
                         "ret": [
-                            53,
+                            51,
+                            52,
                             54,
-                            56,
-                            62,
-                            65,
-                            66,
-                            70,
-                            78,
-                            82
-                        ],
-                        "buffer": [
-                            58,
-                            59,
-                            61,
+                            57,
+                            63,
                             67,
-                            75,
-                            89
-                        ],
-                        "cls": [
-                            72,
+                            70,
+                            71,
                             73,
                             78,
-                            80,
+                            92,
+                            94,
+                            95,
+                            97,
+                            103,
+                            104,
+                            112,
+                            118,
+                            123,
+                            132
+                        ],
+                        "fops": [
+                            82,
+                            101
+                        ],
+                        "owner": [
+                            83
+                        ],
+                        "open": [
+                            84
+                        ],
+                        "release": [
+                            85
+                        ],
+                        "read": [
                             86,
+                            147
+                        ],
+                        "write": [
                             87
+                        ],
+                        "major_num": [
+                            99,
+                            122
+                        ],
+                        "class": [
+                            109,
+                            110,
+                            111,
+                            112,
+                            116,
+                            119,
+                            126,
+                            127,
+                            136,
+                            137
                         ]
                     },
                     "unused_variables": []
                 },
                 "dependency_analysis": {
-                    "total_includes": 7,
+                    "total_includes": 8,
                     "kernel_includes": [
                         "linux/module.h",
                         "linux/kernel.h",
+                        "linux/init.h",
                         "linux/fs.h",
                         "linux/cdev.h",
                         "linux/device.h",
@@ -554,997 +1515,924 @@
                     ],
                     "system_includes": [],
                     "external_function_calls": [
-                        "copy_from_user",
-                        "printk",
-                        "kmalloc",
-                        "printk",
-                        "printk",
-                        "printk",
-                        "printk",
-                        "printk"
+                        "copy_from_user"
                     ]
                 },
                 "complexity_metrics": {
-                    "lines_of_code": 88,
+                    "lines_of_code": 114,
                     "function_count": 4,
-                    "average_function_length": 22.0,
-                    "comment_ratio": 0.0
-                },
-                "kernel_score": 100.0,
-                "functionality": {
-                    "basic_operations": 1.0,
-                    "error_handling": 0.54,
-                    "edge_cases": 0.3
-                }
-            },
-            "compilation_results": {
-                "success_rate": 1.0,
-                "warnings_count": 0,
-                "errors_count": 0,
-                "raw_output": "An unexpected error occurred: [WinError 2] The system cannot find the file specified"
-            },
-            "security_results": {
-                "kernel_memory_safety": 0.0,
-                "kernel_concurrency": 1.0,
-                "kernel_api_misuse": 1.0
-            },
-            "code_quality_results": {
-                "style_compliance": 1.0,
-                "documentation": 0.06,
-                "maintainability": 1.0
-            }
-        },
-        "gemini-2.5-flash result": {
-            "static_analysis_results": {
-                "semantic_analysis": {
-                    "function_call_frequency": {
-                        "BUFFER_SIZE": 1,
-                        "DEFINE_MUTEX": 1,
-                        "my_open": 1,
-                        "if": 13,
-                        "pr_info": 9,
-                        "mutex_unlock": 3,
-                        "my_release": 1,
-                        "my_read": 1,
-                        "min": 2,
-                        "my_write": 1,
-                        "pr_err": 6,
-                        "my_init": 1,
-                        "alloc_chrdev_region": 1,
-                        "MINOR": 1,
-                        "class": 1,
-                        "class_create": 1,
-                        "PTR_ERR": 2,
-                        "cdev_init": 1,
-                        "cdev_add": 1,
-                        "kmalloc": 1,
-                        "memset": 1,
-                        "cdev_del": 2,
-                        "device_destroy": 2,
-                        "class_destroy": 2,
-                        "unregister_chrdev_region": 2,
-                        "my_exit": 1,
-                        "kfree": 1,
-                        "module_init": 1,
-                        "module_exit": 1,
-                        "MODULE_LICENSE": 1,
-                        "MODULE_AUTHOR": 1,
-                        "MODULE_DESCRIPTION": 1,
-                        "MODULE_VERSION": 1
-                    },
-                    "semantic_issues": [],
-                    "error_handling_ratio": 0.2727272727272727
-                },
-                "control_flow_analysis": {
-                    "control_structures": {
-                        "if_statements": 13,
-                        "for_loops": 0,
-                        "while_loops": 0,
-                        "switch_statements": 0,
-                        "goto_statements": 9
-                    },
-                    "cyclomatic_complexity": 14,
-                    "max_nesting_depth": 2
-                },
-                "data_flow_analysis": {
-                    "variable_definitions": {
-                        "ret": [
-                            47,
-                            54,
-                            59,
-                            81,
-                            86,
-                            95,
-                            120,
-                            130,
-                            137,
-                            145,
-                            154
-                        ],
-                        "bytes_to_read": [
-                            51
-                        ],
-                        "bytes_to_write": [
-                            76
-                        ],
-                        "buffer_data_len": [
-                            93,
-                            158
-                        ],
-                        "my_fops": [
-                            104
-                        ],
-                        "owner": [
-                            105,
-                            144
-                        ],
-                        "open": [
-                            106
-                        ],
-                        "release": [
-                            107
-                        ],
-                        "read": [
-                            108
-                        ],
-                        "write": [
-                            109
-                        ],
-                        "llseek": [
-                            110
-                        ],
-                        "my_class": [
-                            128
-                        ],
-                        "device_buffer": [
-                            152
-                        ]
-                    },
-                    "variable_usages": {
-                        "ret": [
-                            47,
-                            48,
-                            54,
-                            55,
-                            59,
-                            61,
-                            64,
-                            70,
-                            73,
-                            78,
-                            81,
-                            82,
-                            86,
-                            87,
-                            95,
-                            97,
-                            101,
-                            115,
-                            120,
-                            121,
-                            122,
-                            130,
-                            131,
-                            137,
-                            138,
-                            145,
-                            146,
-                            147,
-                            154,
-                            162,
-                            173
-                        ],
-                        "bytes_to_read": [
-                            51,
-                            53,
-                            58,
-                            59,
-                            63
-                        ],
-                        "bytes_to_write": [
-                            76,
-                            85,
-                            90,
-                            95,
-                            100
-                        ],
-                        "buffer_data_len": [
-                            93,
-                            100,
-                            158
-                        ],
-                        "my_fops": [
-                            104,
-                            143
-                        ],
-                        "owner": [
-                            105,
-                            144
-                        ],
-                        "open": [
-                            106
-                        ],
-                        "release": [
-                            107
-                        ],
-                        "read": [
-                            108,
-                            203
-                        ],
-                        "write": [
-                            109,
-                            203
-                        ],
-                        "llseek": [
-                            110
-                        ],
-                        "my_class": [
-                            128,
-                            129,
-                            130,
-                            136,
-                            137,
-                            167,
-                            169,
-                            187,
-                            190
-                        ],
-                        "device_buffer": [
-                            152,
-                            153,
-                            159,
-                            181
-                        ]
-                    },
-                    "unused_variables": []
-                },
-                "dependency_analysis": {
-                    "total_includes": 7,
-                    "kernel_includes": [
-                        "linux/module.h",
-                        "linux/fs.h",
-                        "linux/cdev.h",
-                        "linux/device.h",
-                        "linux/slab.h",
-                        "linux/uaccess.h",
-                        "linux/mutex.h"
-                    ],
-                    "system_includes": [],
-                    "external_function_calls": [
-                        "copy_from_user",
-                        "kmalloc"
-                    ]
-                },
-                "complexity_metrics": {
-                    "lines_of_code": 166,
-                    "function_count": 4,
-                    "average_function_length": 41.5,
-                    "comment_ratio": 0.13800343577018515
-                },
-                "kernel_score": 100.0,
-                "functionality": {
-                    "basic_operations": 1.0,
-                    "error_handling": 0.56,
-                    "edge_cases": 0.6
-                }
-            },
-            "compilation_results": {
-                "success_rate": 1.0,
-                "warnings_count": 0,
-                "errors_count": 0,
-                "raw_output": "An unexpected error occurred: [WinError 2] The system cannot find the file specified"
-            },
-            "security_results": {
-                "kernel_memory_safety": 0.0,
-                "kernel_concurrency": 1.0,
-                "kernel_api_misuse": 1.0
-            },
-            "code_quality_results": {
-                "style_compliance": 1.0,
-                "documentation": 0.24,
-                "maintainability": 1.0
-            }
-        }
-    },
-    "Create a kernel module that interacts with hardware.": {
-        "prompt_weight": 0.46399999999999997,
-        "Model Name": "gemini-2.5-flash",
-        "gemini-1.5-flash result": {
-            "static_analysis_results": {
-                "semantic_analysis": {
-                    "function_call_frequency": {
-                        "my_hardware_open": 1,
-                        "my_hardware_release": 1,
-                        "my_hardware_read": 1,
-                        "if": 8,
-                        "ioread32": 1,
-                        "sizeof": 1,
-                        "my_hardware_write": 1,
-                        "iowrite32": 1,
-                        "my_hardware_init": 1,
-                        "alloc_chrdev_region": 1,
-                        "printk": 6,
-                        "cdev_init": 1,
-                        "cdev_add": 1,
-                        "unregister_chrdev_region": 4,
-                        "class_create": 1,
-                        "cdev_del": 3,
-                        "PTR_ERR": 1,
-                        "device_create": 1,
-                        "ioremap": 1,
-                        "device_destroy": 2,
-                        "class_destroy": 2,
-                        "my_hardware_exit": 1,
-                        "iounmap": 1,
-                        "module_init": 1,
-                        "module_exit": 1,
-                        "MODULE_LICENSE": 1,
-                        "MODULE_AUTHOR": 1,
-                        "MODULE_DESCRIPTION": 1
-                    },
-                    "semantic_issues": [],
-                    "error_handling_ratio": 0.38461538461538464
-                },
-                "control_flow_analysis": {
-                    "control_structures": {
-                        "if_statements": 8,
-                        "for_loops": 0,
-                        "while_loops": 0,
-                        "switch_statements": 0,
-                        "goto_statements": 0
-                    },
-                    "cyclomatic_complexity": 9,
-                    "max_nesting_depth": 2
-                },
-                "data_flow_analysis": {
-                    "variable_definitions": {
-                        "value": [
-                            31
-                        ],
-                        "my_hardware_fops": [
-                            52
-                        ],
-                        "owner": [
-                            53
-                        ],
-                        "open": [
-                            54
-                        ],
-                        "release": [
-                            55
-                        ],
-                        "read": [
-                            56
-                        ],
-                        "write": [
-                            57
-                        ],
-                        "ret": [
-                            62,
-                            68
-                        ],
-                        "my_class": [
-                            75
-                        ],
-                        "my_hardware_base": [
-                            83
-                        ]
-                    },
-                    "variable_usages": {
-                        "value": [
-                            31,
-                            32,
-                            35,
-                            40,
-                            41,
-                            44,
-                            47
-                        ],
-                        "my_hardware_fops": [
-                            52,
-                            67
-                        ],
-                        "owner": [
-                            53
-                        ],
-                        "open": [
-                            54
-                        ],
-                        "release": [
-                            55
-                        ],
-                        "read": [
-                            56
-                        ],
-                        "write": [
-                            57
-                        ],
-                        "ret": [
-                            62,
-                            63,
-                            65,
-                            68,
-                            69,
-                            72,
-                            80,
-                            90,
-                            94
-                        ],
-                        "my_class": [
-                            75,
-                            76,
-                            80,
-                            82,
-                            86,
-                            87,
-                            99,
-                            100
-                        ],
-                        "my_hardware_base": [
-                            83,
-                            84,
-                            98
-                        ]
-                    },
-                    "unused_variables": []
-                },
-                "dependency_analysis": {
-                    "total_includes": 7,
-                    "kernel_includes": [
-                        "linux/module.h",
-                        "linux/kernel.h",
-                        "linux/fs.h",
-                        "linux/cdev.h",
-                        "linux/device.h",
-                        "linux/uaccess.h",
-                        "linux/io.h"
-                    ],
-                    "system_includes": [],
-                    "external_function_calls": [
-                        "copy_from_user",
-                        "printk",
-                        "printk",
-                        "printk",
-                        "printk",
-                        "printk",
-                        "printk"
-                    ]
-                },
-                "complexity_metrics": {
-                    "lines_of_code": 97,
-                    "function_count": 4,
-                    "average_function_length": 24.25,
-                    "comment_ratio": 0.050957481337228175
+                    "average_function_length": 28.5,
+                    "comment_ratio": 0.02999754118514876
                 },
                 "kernel_score": 83.33333333333333,
                 "functionality": {
                     "basic_operations": 1.0,
-                    "error_handling": 0.63,
-                    "edge_cases": 0.8
+                    "error_handling": 0.2,
+                    "edge_cases": 0.6
                 }
             },
             "compilation_results": {
-                "success_rate": 1.0,
+                "success_rate": 0.0,
                 "warnings_count": 0,
-                "errors_count": 0,
+                "errors_count": 1,
                 "raw_output": "An unexpected error occurred: [WinError 2] The system cannot find the file specified"
             },
             "security_results": {
-                "kernel_memory_safety": 0.0,
+                "kernel_memory_safety": 0.2,
                 "kernel_concurrency": 1.0,
                 "kernel_api_misuse": 1.0
-            },
-            "code_quality_results": {
-                "style_compliance": 1.0,
-                "documentation": 0.0,
-                "maintainability": 1.0
             }
         },
         "gemini-2.5-flash result": {
+            "clang_analysis_results": {
+                "style_compliance": 0.95,
+                "documentation": 0.65,
+                "maintainability": 0.85
+            },
             "static_analysis_results": {
                 "semantic_analysis": {
                     "function_call_frequency": {
-                        "kfree": 1,
-                        "data": 1,
-                        "my_hw_open": 1,
+                        "Registers": 2,
+                        "interrupt": 1,
+                        "devices": 1,
+                        "mdelay": 2,
+                        "MODULE_LICENSE": 1,
+                        "MODULE_AUTHOR": 1,
+                        "MODULE_DESCRIPTION": 1,
+                        "MODULE_VERSION": 1,
+                        "register": 3,
+                        "_IOW": 2,
+                        "_IOR": 4,
+                        "_IO": 4,
+                        "my_hw_open": 2,
+                        "my_hw_release": 2,
+                        "my_hw_read": 2,
+                        "my_hw_write": 2,
+                        "my_hw_ioctl": 2,
+                        "Handler": 1,
+                        "my_hw_isr": 3,
+                        "dev_info": 19,
+                        "complete": 2,
                         "container_of": 1,
-                        "dev_info": 7,
-                        "my_hw_release": 1,
-                        "my_hw_read": 1,
-                        "if": 17,
-                        "dev_err": 10,
-                        "readl": 1,
-                        "sizeof": 4,
-                        "my_hw_write": 1,
-                        "writel": 1,
+                        "ioread32": 3,
+                        "if": 36,
+                        "sizeof": 7,
+                        "dev_err": 11,
+                        "dev_warn": 2,
+                        "iowrite32": 3,
+                        "switch": 1,
+                        "reinit_completion": 1,
                         "my_hw_probe": 1,
                         "devm_kzalloc": 1,
                         "platform_set_drvdata": 1,
-                        "platform_get_resource": 1,
+                        "init_completion": 1,
+                        "platform_get_resource": 2,
                         "devm_ioremap_resource": 1,
                         "PTR_ERR": 3,
-                        "resource_size": 1,
+                        "devm_request_irq": 1,
                         "alloc_chrdev_region": 1,
+                        "MINOR": 1,
                         "cdev_init": 1,
                         "cdev_add": 1,
-                        "exist": 1,
+                        "dev": 2,
                         "class_create": 1,
-                        "device_create": 1,
-                        "MINOR": 1,
+                        "class_destroy": 2,
                         "cdev_del": 2,
                         "unregister_chrdev_region": 2,
                         "my_hw_remove": 1,
                         "platform_get_drvdata": 1,
                         "device_destroy": 1,
-                        "resources": 1,
+                        "APIs": 1,
+                        "unbound": 1,
                         "MODULE_DEVICE_TABLE": 1,
-                        "ARRAY_SIZE": 1,
-                        "my_hw_module_init": 1,
-                        "pr_info": 2,
-                        "platform_device_register": 1,
-                        "pr_err": 2,
+                        "device": 1,
+                        "Blob": 1,
+                        "my_hw_init": 1,
+                        "simulation": 1,
+                        "pr_info": 6,
+                        "platform_device_alloc": 1,
+                        "pr_err": 5,
+                        "platform_device_add_resources": 1,
+                        "of_fwnode_handle_create": 1,
+                        "platform_device_add": 1,
                         "platform_driver_register": 1,
-                        "platform_device_unregister": 2,
-                        "my_hw_module_exit": 1,
+                        "platform_device_del": 2,
+                        "of_fwnode_handle_put": 2,
+                        "platform_device_put": 2,
+                        "my_hw_exit": 1,
                         "platform_driver_unregister": 1,
-                        "class_destroy": 1,
                         "module_init": 1,
                         "module_exit": 1,
-                        "MODULE_LICENSE": 1,
-                        "MODULE_AUTHOR": 1,
-                        "MODULE_DESCRIPTION": 1,
-                        "MODULE_VERSION": 1
+                        "ifeq": 1,
+                        "u32": 1,
+                        "Commands": 1,
+                        "main": 1,
+                        "printf": 19,
+                        "open": 1,
+                        "perror": 11,
+                        "Write": 1,
+                        "write": 1,
+                        "read": 1,
+                        "background": 1,
+                        "close": 1,
+                        "module": 1,
+                        "Device": 1,
+                        "Interrupt": 1
                     },
                     "semantic_issues": [],
-                    "error_handling_ratio": 0.3333333333333333
+                    "error_handling_ratio": 0.3076923076923077
                 },
                 "control_flow_analysis": {
                     "control_structures": {
-                        "if_statements": 17,
+                        "if_statements": 36,
                         "for_loops": 0,
                         "while_loops": 0,
-                        "switch_statements": 0,
-                        "goto_statements": 3
+                        "switch_statements": 1,
+                        "goto_statements": 7
                     },
-                    "cyclomatic_complexity": 18,
+                    "cyclomatic_complexity": 38,
                     "max_nesting_depth": 3
                 },
                 "data_flow_analysis": {
                     "variable_definitions": {
-                        "priv": [
-                            35,
-                            43,
-                            50,
-                            80,
-                            203
-                        ],
-                        "private_data": [
-                            36
-                        ],
-                        "reg_val": [
-                            63,
-                            65
-                        ],
-                        "hw_value": [
-                            99,
-                            185
-                        ],
                         "my_hw_fops": [
-                            106
+                            85
                         ],
                         "owner": [
-                            107,
-                            154
+                            86,
+                            334
                         ],
                         "open": [
-                            108
+                            87
                         ],
                         "release": [
-                            109
+                            88
                         ],
                         "read": [
-                            110
+                            89
                         ],
                         "write": [
-                            111
+                            90
                         ],
-                        "my_hw_priv_data": [
-                            121
+                        "unlocked_ioctl": [
+                            91
                         ],
-                        "res": [
-                            128
+                        "priv": [
+                            99,
+                            118,
+                            127,
+                            135,
+                            163,
+                            191,
+                            276,
+                            375
                         ],
-                        "reg_base": [
-                            137
+                        "private_data": [
+                            119
+                        ],
+                        "retval": [
+                            137,
+                            156,
+                            165,
+                            184
+                        ],
+                        "data_to_read": [
+                            141
+                        ],
+                        "count": [
+                            148
+                        ],
+                        "data_reg_val": [
+                            180,
+                            291
                         ],
                         "ret": [
-                            146,
-                            156,
-                            167,
-                            177,
-                            266,
-                            273
+                            192,
+                            201,
+                            215,
+                            226,
+                            250,
+                            258,
+                            271,
+                            316,
+                            325,
+                            336,
+                            346,
+                            356,
+                            454,
+                            468,
+                            476,
+                            484
                         ],
-                        "my_hw_class": [
-                            164,
-                            298
+                        "control_reg_val": [
+                            206,
+                            289
+                        ],
+                        "value": [
+                            212,
+                            213,
+                            223,
+                            224,
+                            596,
+                            621,
+                            631
                         ],
                         "dev": [
-                            173
+                            282
+                        ],
+                        "status_reg_val": [
+                            290
+                        ],
+                        "res_mem": [
+                            294
+                        ],
+                        "regs": [
+                            300
+                        ],
+                        "res_irq": [
+                            309
+                        ],
+                        "irq": [
+                            314
+                        ],
+                        "dev_class": [
+                            343
+                        ],
+                        "compatible": [
+                            403
                         ],
                         "my_hw_driver": [
-                            227
+                            408
                         ],
                         "probe": [
-                            228
+                            409
                         ],
                         "remove": [
-                            229
+                            410
                         ],
                         "driver": [
-                            230
+                            411
                         ],
                         "name": [
-                            231,
-                            244,
-                            250
+                            412,
+                            433,
+                            440
                         ],
                         "of_match_table": [
-                            232
-                        ],
-                        "id_table": [
-                            233
+                            413
                         ],
                         "start": [
-                            242
+                            430,
+                            437
                         ],
                         "end": [
-                            243
+                            431,
+                            438
                         ],
                         "flags": [
-                            245
+                            432,
+                            439
                         ],
-                        "my_hw_platform_device": [
-                            249
+                        "my_sim_pdev": [
+                            447
                         ],
-                        "id": [
-                            251
+                        "of_node": [
+                            463
                         ],
-                        "num_resources": [
-                            252
+                        "M": [
+                            535,
+                            538,
+                            541
                         ],
-                        "resource": [
-                            253
+                        "fd": [
+                            579,
+                            584
+                        ],
+                        "bytes_written": [
+                            623
+                        ],
+                        "bytes_read": [
+                            633
                         ]
                     },
                     "variable_usages": {
-                        "priv": [
-                            35,
-                            36,
-                            37,
-                            43,
-                            44,
-                            50,
-                            58,
-                            63,
-                            65,
-                            67,
-                            70,
-                            80,
-                            88,
-                            93,
-                            98,
-                            99,
-                            100,
-                            121,
-                            122,
-                            125,
-                            137,
-                            138,
-                            139,
-                            140,
-                            143,
-                            146,
-                            153,
-                            154,
-                            156,
-                            173,
-                            175,
-                            176,
-                            177,
-                            181,
-                            182,
-                            185,
-                            193,
-                            195,
-                            203,
-                            208,
-                            210,
-                            212
-                        ],
-                        "private_data": [
-                            36,
-                            43,
-                            50,
-                            80
-                        ],
-                        "reg_val": [
-                            63,
-                            65,
-                            67,
-                            69,
-                            74,
-                            75,
-                            81,
-                            87,
-                            88,
-                            92,
-                            98,
-                            99,
-                            100,
-                            102,
-                            103
-                        ],
-                        "hw_value": [
-                            99,
-                            185
-                        ],
                         "my_hw_fops": [
-                            106,
-                            153
+                            85,
+                            333
                         ],
                         "owner": [
-                            107,
-                            154
+                            86,
+                            334
                         ],
                         "open": [
-                            108
+                            87,
+                            113,
+                            121,
+                            579,
+                            581,
+                            584
                         ],
                         "release": [
-                            109
+                            88,
+                            125
                         ],
                         "read": [
-                            110
-                        ],
-                        "write": [
-                            111
-                        ],
-                        "my_hw_priv_data": [
-                            121,
-                            122,
-                            125,
-                            137,
-                            138,
-                            139,
-                            140,
-                            143,
-                            146,
-                            153,
-                            154,
-                            156,
-                            173,
-                            175,
-                            176,
-                            177,
-                            181,
-                            182,
-                            185,
-                            193,
-                            195
-                        ],
-                        "res": [
-                            128,
-                            129,
-                            135,
+                            89,
+                            103,
+                            133,
                             136,
-                            137,
-                            143,
-                            196,
-                            213,
-                            240,
-                            252,
-                            253
-                        ],
-                        "reg_base": [
-                            137,
-                            138,
-                            139,
                             140,
-                            143
-                        ],
-                        "ret": [
-                            146,
-                            147,
-                            148,
-                            149,
-                            156,
-                            157,
-                            158,
-                            167,
-                            177,
-                            187,
-                            197,
-                            198,
-                            215,
-                            260,
-                            266,
-                            267,
-                            268,
-                            269,
-                            273,
-                            274,
-                            275,
-                            278,
-                            281
-                        ],
-                        "my_hw_class": [
-                            164,
-                            165,
-                            166,
-                            167,
-                            173,
-                            208,
-                            296,
-                            297,
-                            298
-                        ],
-                        "dev": [
-                            173,
-                            174,
-                            175,
-                            176,
-                            177,
-                            178,
-                            181,
-                            182,
-                            189,
-                            190,
-                            191,
-                            193,
-                            194,
-                            195,
-                            196,
-                            201,
-                            203,
-                            205,
-                            207,
-                            208,
-                            209,
-                            210,
+                            141,
+                            142,
+                            145,
+                            150,
                             211,
                             212,
+                            222,
+                            223,
+                            576,
+                            631,
+                            632,
+                            633,
+                            634,
+                            637,
+                            642,
+                            708,
+                            719
+                        ],
+                        "write": [
+                            90,
+                            161,
+                            164,
+                            173,
+                            179,
+                            180,
+                            181,
+                            204,
+                            205,
+                            233,
+                            236,
+                            622,
+                            623,
+                            708,
+                            719
+                        ],
+                        "unlocked_ioctl": [
+                            91
+                        ],
+                        "priv": [
+                            99,
+                            101,
+                            106,
+                            115,
+                            117,
+                            118,
+                            119,
+                            121,
+                            127,
+                            129,
+                            135,
+                            140,
+                            141,
+                            142,
+                            151,
+                            163,
+                            168,
+                            174,
+                            179,
+                            180,
+                            181,
+                            191,
+                            205,
+                            206,
+                            207,
+                            212,
                             213,
-                            220,
-                            221,
-                            232,
+                            218,
+                            223,
+                            224,
+                            229,
+                            236,
+                            238,
                             240,
+                            244,
+                            246,
+                            248,
                             249,
                             252,
-                            253,
-                            264,
-                            266,
-                            268,
-                            276,
-                            277,
-                            289,
-                            292,
-                            293,
-                            295,
-                            307
-                        ],
-                        "my_hw_driver": [
-                            227,
-                            273,
-                            290
-                        ],
-                        "probe": [
-                            228,
-                            239,
-                            265
-                        ],
-                        "remove": [
-                            229,
-                            289
-                        ],
-                        "driver": [
-                            230,
-                            239,
-                            265,
-                            272,
-                            273,
+                            257,
+                            269,
                             275,
                             276,
-                            288,
+                            277,
+                            278,
+                            282,
+                            283,
+                            286,
                             289,
-                            290
+                            290,
+                            291,
+                            300,
+                            301,
+                            303,
+                            306,
+                            314,
+                            316,
+                            317,
+                            319,
+                            322,
+                            325,
+                            331,
+                            333,
+                            334,
+                            336,
+                            343,
+                            344,
+                            346,
+                            351,
+                            353,
+                            354,
+                            360,
+                            364,
+                            366,
+                            368,
+                            375,
+                            380,
+                            383,
+                            386,
+                            389,
+                            698,
+                            719,
+                            722,
+                            723
+                        ],
+                        "private_data": [
+                            119,
+                            127,
+                            135,
+                            163,
+                            191
+                        ],
+                        "retval": [
+                            137,
+                            156,
+                            158,
+                            165,
+                            184,
+                            186
+                        ],
+                        "data_to_read": [
+                            141,
+                            142,
+                            150
+                        ],
+                        "count": [
+                            148,
+                            150,
+                            155,
+                            156,
+                            161,
+                            167,
+                            169
+                        ],
+                        "data_reg_val": [
+                            180,
+                            291,
+                            719
+                        ],
+                        "ret": [
+                            192,
+                            196,
+                            201,
+                            215,
+                            226,
+                            250,
+                            258,
+                            262,
+                            271,
+                            279,
+                            297,
+                            303,
+                            312,
+                            316,
+                            318,
+                            319,
+                            320,
+                            325,
+                            326,
+                            328,
+                            336,
+                            337,
+                            346,
+                            356,
+                            361,
+                            369,
+                            370,
+                            396,
+                            426,
+                            450,
+                            454,
+                            456,
+                            457,
+                            468,
+                            476,
+                            477,
+                            478,
+                            484,
+                            485,
+                            486,
+                            491,
+                            499,
+                            582,
+                            675
+                        ],
+                        "control_reg_val": [
+                            206,
+                            213,
+                            289,
+                            719
+                        ],
+                        "value": [
+                            212,
+                            213,
+                            214,
+                            218,
+                            223,
+                            224,
+                            225,
+                            229,
+                            288,
+                            291,
+                            369,
+                            575,
+                            588,
+                            589,
+                            592,
+                            596,
+                            597,
+                            598,
+                            604,
+                            605,
+                            608,
+                            612,
+                            615,
+                            621,
+                            622,
+                            623,
+                            631,
+                            633,
+                            637
+                        ],
+                        "dev": [
+                            282,
+                            283,
+                            294,
+                            296,
+                            300,
+                            302,
+                            305,
+                            309,
+                            311,
+                            316,
+                            317,
+                            319,
+                            322,
+                            325,
+                            327,
+                            330,
+                            331,
+                            333,
+                            334,
+                            336,
+                            338,
+                            339,
+                            342,
+                            343,
+                            344,
+                            345,
+                            346,
+                            347,
+                            350,
+                            351,
+                            352,
+                            353,
+                            354,
+                            355,
+                            360,
+                            364,
+                            365,
+                            366,
+                            367,
+                            368,
+                            369,
+                            373,
+                            375,
+                            377,
+                            379,
+                            380,
+                            382,
+                            383,
+                            385,
+                            386,
+                            388,
+                            389,
+                            391,
+                            392,
+                            395,
+                            400,
+                            402,
+                            403,
+                            419,
+                            420,
+                            422,
+                            446,
+                            447,
+                            448,
+                            449,
+                            453,
+                            454,
+                            457,
+                            458,
+                            462,
+                            463,
+                            466,
+                            467,
+                            468,
+                            469,
+                            471,
+                            475,
+                            476,
+                            478,
+                            481,
+                            487,
+                            493,
+                            494,
+                            496,
+                            497,
+                            498,
+                            509,
+                            510,
+                            512,
+                            513,
+                            514,
+                            578,
+                            579,
+                            581,
+                            625,
+                            635,
+                            672,
+                            702,
+                            718,
+                            719
+                        ],
+                        "status_reg_val": [
+                            290,
+                            719
+                        ],
+                        "res_mem": [
+                            294,
+                            295,
+                            300,
+                            306
+                        ],
+                        "regs": [
+                            300,
+                            301,
+                            303,
+                            306,
+                            719
+                        ],
+                        "res_irq": [
+                            309,
+                            310,
+                            314
+                        ],
+                        "irq": [
+                            314,
+                            316,
+                            319,
+                            322,
+                            391,
+                            393,
+                            440,
+                            722,
+                            723
+                        ],
+                        "dev_class": [
+                            343,
+                            344,
+                            346,
+                            353,
+                            364,
+                            380,
+                            383
+                        ],
+                        "compatible": [
+                            403,
+                            461,
+                            464,
+                            471,
+                            472
+                        ],
+                        "my_hw_driver": [
+                            408,
+                            412,
+                            447,
+                            484,
+                            507,
+                            548,
+                            684,
+                            700,
+                            712
+                        ],
+                        "probe": [
+                            409,
+                            718
+                        ],
+                        "remove": [
+                            410,
+                            511,
+                            714
+                        ],
+                        "driver": [
+                            411,
+                            412,
+                            447,
+                            462,
+                            483,
+                            484,
+                            486,
+                            506,
+                            507,
+                            511,
+                            548,
+                            684,
+                            700,
+                            712,
+                            718,
+                            719,
+                            722
                         ],
                         "name": [
-                            231,
-                            244,
-                            250,
-                            251
+                            412,
+                            433,
+                            440,
+                            531
                         ],
                         "of_match_table": [
-                            232
-                        ],
-                        "id_table": [
-                            233
+                            413,
+                            462
                         ],
                         "start": [
-                            242
+                            430,
+                            437
                         ],
                         "end": [
-                            243
+                            431,
+                            438,
+                            549,
+                            722
                         ],
                         "flags": [
-                            245
+                            432,
+                            439
                         ],
-                        "my_hw_platform_device": [
-                            249,
-                            266,
-                            277,
-                            293
+                        "my_sim_pdev": [
+                            447,
+                            448,
+                            454,
+                            463,
+                            466,
+                            468,
+                            476,
+                            494,
+                            496,
+                            498,
+                            510,
+                            512,
+                            513,
+                            514,
+                            718
                         ],
-                        "id": [
-                            251,
-                            258,
-                            284
+                        "of_node": [
+                            463,
+                            466,
+                            468,
+                            479,
+                            495,
+                            496,
+                            513
                         ],
-                        "num_resources": [
-                            252
+                        "M": [
+                            566,
+                            567,
+                            568,
+                            569,
+                            570,
+                            571,
+                            589,
+                            590,
+                            598,
+                            599,
+                            605,
+                            606,
+                            612,
+                            613,
+                            644,
+                            645,
+                            652,
+                            653,
+                            660,
+                            661,
+                            665,
+                            666,
+                            685,
+                            702,
+                            718,
+                            719,
+                            722,
+                            724
                         ],
-                        "resource": [
-                            253
+                        "fd": [
+                            579,
+                            580,
+                            589,
+                            598,
+                            605,
+                            612,
+                            623,
+                            633,
+                            644,
+                            652,
+                            660,
+                            665,
+                            673
+                        ],
+                        "bytes_written": [
+                            623,
+                            624,
+                            627
+                        ],
+                        "bytes_read": [
+                            633,
+                            634,
+                            637
                         ]
                     },
                     "unused_variables": []
                 },
                 "dependency_analysis": {
-                    "total_includes": 9,
+                    "total_includes": 18,
                     "kernel_includes": [
                         "linux/module.h",
                         "linux/platform_device.h",
+                        "linux/mod_devicetable.h",
+                        "linux/io.h",
+                        "linux/slab.h",
                         "linux/fs.h",
                         "linux/cdev.h",
-                        "linux/io.h",
                         "linux/uaccess.h",
-                        "linux/slab.h",
-                        "linux/err.h",
-                        "linux/device.h"
+                        "linux/interrupt.h",
+                        "linux/completion.h",
+                        "linux/delay.h"
                     ],
-                    "system_includes": [],
+                    "system_includes": [
+                        "stdio.h",
+                        "stdlib.h",
+                        "string.h",
+                        "unistd.h",
+                        "fcntl.h",
+                        "sys/ioctl.h",
+                        "stdint.h"
+                    ],
                     "external_function_calls": [
+                        "copy_from_user",
                         "copy_from_user"
                     ]
                 },
                 "complexity_metrics": {
-                    "lines_of_code": 253,
-                    "function_count": 6,
-                    "average_function_length": 42.166666666666664,
-                    "comment_ratio": 0.27941032900517426
+                    "lines_of_code": 594,
+                    "function_count": 9,
+                    "average_function_length": 66.0,
+                    "comment_ratio": 0.2135483122607586
                 },
                 "kernel_score": 100.0,
                 "functionality": {
                     "basic_operations": 1.0,
-                    "error_handling": 0.6,
+                    "error_handling": 0.58,
                     "edge_cases": 0.8
                 }
             },
             "compilation_results": {
-                "success_rate": 1.0,
+                "success_rate": 0.0,
                 "warnings_count": 0,
-                "errors_count": 0,
+                "errors_count": 1,
                 "raw_output": "An unexpected error occurred: [WinError 2] The system cannot find the file specified"
             },
             "security_results": {
                 "kernel_memory_safety": 0.0,
                 "kernel_concurrency": 1.0,
                 "kernel_api_misuse": 1.0
-            },
-            "code_quality_results": {
-                "style_compliance": 1.0,
-                "documentation": 0.61,
-                "maintainability": 1.0
             }
         }
     }

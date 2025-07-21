@@ -16,7 +16,7 @@ class KernelModuleCompiler:
         """
         Compiles the driver code and parses the compiler output to generate metrics.
         """
-        # A standard Makefile for building a single-file kernel module.
+        
         makefile_content = """ 
         obj-m += driver_under_test.o
         KDIR := /lib/modules/$(shell uname -r)/build
@@ -29,7 +29,6 @@ class KernelModuleCompiler:
 	        $(MAKE) -C $(KDIR) M=$(PWD) clean
         """
         
-        # Using a temporary directory ensures a clean build environment.
         with tempfile.TemporaryDirectory() as temp_dir:
             driver_file = os.path.join(temp_dir, 'driver_under_test.c')
             makefile = os.path.join(temp_dir, 'Makefile')
@@ -40,7 +39,6 @@ class KernelModuleCompiler:
                 f.write(makefile_content)
             
             try:
-                # Execute the build command from within the temporary directory.
                 result = subprocess.run(
                     ['make'],
                     cwd=temp_dir,
@@ -51,17 +49,11 @@ class KernelModuleCompiler:
                 
                 build_output = result.stdout + result.stderr
                 
-                # --- New Parsing Logic ---
-                # Use regex to count all instances of "error:" and "warning:".
                 errors_count = len(re.findall(r':\berror:', build_output))
                 warnings_count = len(re.findall(r':\bwarning:', build_output))
                 
-                # The success_rate is 1.0 if compilation succeeds (exit code 0),
-                # and 0.0 otherwise. This could be made more nuanced by applying
-                # a penalty for warnings, e.g., `1.0 - (warnings_count * 0.01)`.
                 success_rate = 1.0 if result.returncode == 0 else 0.0
                 
-                # Return the structured dictionary.
                 return {
                     "success_rate": success_rate,
                     "warnings_count": warnings_count,
@@ -72,8 +64,8 @@ class KernelModuleCompiler:
                 return {
                     "success_rate": 0.0,
                     "warnings_count": 0,
-                    "errors_count": 1, # The timeout is considered a build error
-                    "raw_output": "Build process timed out." # Optional: add raw output for context
+                    "errors_count": 1, 
+                    "raw_output": "Build process timed out." 
                 }
             except Exception as e:
                 return {
@@ -84,7 +76,7 @@ class KernelModuleCompiler:
                 }
 
 if __name__ == '__main__':
-    # Sample kernel code with a warning (unused variable) and an error (missing semicolon)
+    
     sample_code_with_issues = """
     #include <linux/module.h>
     #include <linux/init.h>

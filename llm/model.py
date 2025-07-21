@@ -25,7 +25,7 @@ class GeminiModel:
             "You are an expert Linux kernel developer. Generate clean, production-quality "
             "Linux device driver code in C that strictly adheres to kernel coding standards. "
             "Ensure proper module structure, error handling, and memory management. "
-            "Output only valid C code — no explanations, comments, or markdown formatting."
+            # "Output only valid C code — no explanations, comments, or markdown formatting."
         )
 
         output = {}
