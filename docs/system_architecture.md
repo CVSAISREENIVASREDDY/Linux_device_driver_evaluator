@@ -14,7 +14,7 @@ The system is designed as a pipeline that takes a high-level prompt for a Linux 
 ### Evaluation Suite:
 Once the code is generated, it is passed through a comprehensive suite of evaluators. Each evaluator focuses on a specific aspect of code quality and correctness:
 * **Compilation**: The code is compiled as a Linux kernel module to check for syntax errors and other compilation issues.
-* **Code Quality**: A hybrid analyzer assesses the code's style, documentation, and maintainability. It uses `clang-tidy` for static analysis and custom regex for documentation metrics.
+* **Clang analyzer**: A hybrid analyzer assesses the code's style, documentation, and maintainability. It uses `clang-tidy` for static analysis and custom regex for documentation metrics.
 * **Security**: A vulnerability scanner checks the code for common security pitfalls in kernel development, such as improper memory management and API misuse.
 * **Functionality**: A static analyzer evaluates the implementation of essential driver functionalities, error handling, and edge cases.
 
