@@ -247,13 +247,6 @@ class AdvancedStaticAnalyzer:
         driver_score = sum(kernel_patterns['device_driver_patterns'].values()) / len(kernel_patterns['device_driver_patterns']) * 100
         memory_score = sum(kernel_patterns['memory_patterns'].values()) / len(kernel_patterns['memory_patterns']) * 100
         
-    
-            
-            # 'pattern_scores': {
-            #     'module_structure_score': module_score,
-            #     'driver_patterns_score': driver_score,
-            #     'memory_patterns_score': memory_score
-            # },
         overall_kernel_score = (module_score + driver_score + memory_score) / 3
         return overall_kernel_score
     

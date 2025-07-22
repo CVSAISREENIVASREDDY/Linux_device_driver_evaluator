@@ -8,6 +8,19 @@
                 "documentation": 0.03,
                 "maintainability": 0.7
             },
+            "runtime_results" :{ 
+                "build_success": true,
+                "inserted": true,
+                "size": 6234,
+                "ref_count": 0,
+                "execution_time_sec": 0.004218,
+                "dmesg_output": [],
+                "cpu_usage": {
+                  "user_time_sec": 0.010212,
+                  "system_time_sec": 0.000234
+                },
+                "peak_memory_kb": 19280
+                },               
             "static_analysis_results": {
                 "semantic_analysis": {
                     "function_call_frequency": {
@@ -225,6 +238,19 @@
                 "documentation": 1.0,
                 "maintainability": 1.0
             },
+            "runtime_results" :{
+                "build_success": true,
+                "inserted": true,
+                "size": 8123,
+                "ref_count": 0,
+                "execution_time_sec": 0.005412,
+                "dmesg_output": [],
+                "cpu_usage": {
+                  "user_time_sec": 0.0123,
+                  "system_time_sec": 0.0004
+                },
+                "peak_memory_kb": 18200
+            },               
             "static_analysis_results": {
                 "semantic_analysis": {
                     "function_call_frequency": {
@@ -736,6 +762,13 @@
                 "style_compliance": 0.9,
                 "documentation": 0.2,
                 "maintainability": 0.7
+            },
+            "runtime_results": {
+                "build_success": false,
+                "inserted": false,
+                "removed": false,
+                "metrics": {},
+                "error": "make: *** [Makefile:XX: <target>] Error Y\n<more gcc error about 'min' being undefined>"
             },
             "static_analysis_results": {
                 "semantic_analysis": {

@@ -21,19 +21,19 @@ class total_evaluator:
         from evaluators.security import KernelVulnerabilityScanner
         from evaluators.clang_analyzer import HybridCodeQualityAnalyzer
         from evaluators.static_analyzer import AdvancedStaticAnalyzer 
-
+        from evaluators.runtime_analyzer import RuntimeProfiler
         static_analyzer = AdvancedStaticAnalyzer() 
         compilation_evaluator = KernelModuleCompiler()
         security_evaluator = KernelVulnerabilityScanner()
         clang_analyzer = HybridCodeQualityAnalyzer()
-
+        runtime_analyzer = RuntimeProfiler() 
     
         evaluated_results = {
             'clang_analysis_results' : clang_analyzer.evaluate(code),
             'static_analysis_results' : static_analyzer.deep_static_analysis(code),
             'compilation_results' : compilation_evaluator.evaluate_compilation(code),
-            'security_results' : security_evaluator.evaluate_security(code)
-            
+            'security_results' : security_evaluator.evaluate_security(code),
+            'runtime_results' : runtime_analyzer.analyze_runtime_performance(code)
         } 
 
         return evaluated_results
