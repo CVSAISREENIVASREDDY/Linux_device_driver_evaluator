@@ -114,8 +114,6 @@ clean:
                 return metrics
             metrics['build_success'] = True
 
-            dmesg_before = self._read_dmesg()
-
             start_time = time.time()
             if not self._insert_module():
                 metrics['error'] = "Insert failed"

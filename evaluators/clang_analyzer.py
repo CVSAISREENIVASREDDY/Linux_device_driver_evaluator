@@ -6,7 +6,6 @@ import os
 from typing import Dict, List
 from dataclasses import dataclass
 
-# The ClangIssue dataclass remains unchanged.
 @dataclass
 class ClangIssue:
     severity: str
@@ -26,10 +25,7 @@ class EnhancedClangAnalyzer:
 
         self.clang_executable_path = clang_executable_path
         self.clang_available = self._check_clang_availability()
-        # Use provided include paths or an empty list if None.
         self.kernel_header_paths = include_paths if include_paths is not None else []
-        
-        # Kernel-specific checks remain the same as in your original code.
         self.kernel_checks = [
             'bugprone-unused-parameter', 'bugprone-unused-variable',
             'misc-unused-parameters', 'misc-unused-variables',
@@ -63,10 +59,8 @@ class EnhancedClangAnalyzer:
             temp_file.write(code)
         
         try:
-            # Run the analysis on the temporary file.
             return self._run_detailed_analysis(temp_filepath)
         finally:
-            # Manually clean up the temporary file.
             if os.path.exists(temp_filepath):
                 os.unlink(temp_filepath)
 

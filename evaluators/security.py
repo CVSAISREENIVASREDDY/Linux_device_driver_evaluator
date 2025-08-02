@@ -27,7 +27,7 @@ class KernelVulnerabilityScanner:
                 'severity': 'medium',
                 'recommendation': 'Check for integer overflows before allocating memory.'
             },
-            
+           
             'direct_jiffies_access': {
                 'patterns': [r'\Wjiffies\W'],
                 'severity': 'medium',

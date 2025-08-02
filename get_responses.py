@@ -22,10 +22,10 @@ class GetResponses:
         """
         print(f"models are generating responses for prompt ") 
         return model._generate_code_per_prompt(prompt)  
+    
 if __name__ == "__main__": 
     
     responser = GetResponses() 
-
     sample_prompts = [
         "Write a Linux kernel driver for a simple device.",
         "2Implement a character device driver with basic read/write operations.",

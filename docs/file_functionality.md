@@ -30,9 +30,4 @@
     * Analyzes the code against these patterns to identify potential security issues.
     * Calculates security scores for memory safety, concurrency, and API misuse.
 
-* **`evaluators/functionality.py`**: This module performs a static analysis to evaluate the functionality of the driver. The `AdvancedStaticAnalyzer` class checks for:
-    * Implementation of basic file operations (`.open`, `.read`, `.write`, etc.).
-    * Proper error handling, including checking return values of fallible functions.
-    * Handling of edge cases.
-
 * **`evaluators/prompt_complexity.py`**: This simple module contains a function to calculate a complexity score for the input prompt based on the presence of technical terms, specific requirements, and constraints.

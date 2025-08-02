@@ -102,5 +102,5 @@ if __name__ == '__main__':
     import json 
     with open("compilation_metrics.json", "w") as f:
         json.dump(compilation_metrics, f, indent=4)
-    print("Compilation Metrics:")       
+    print("Compilation Metrics:  ")       
     print(compilation_metrics)          

@@ -1,6 +1,3 @@
-import re 
-import os 
-import sys 
 from dotenv import load_dotenv 
 load_dotenv() 
 import json
@@ -21,7 +18,8 @@ class total_evaluator:
         from evaluators.security import KernelVulnerabilityScanner
         from evaluators.clang_analyzer import HybridCodeQualityAnalyzer
         from evaluators.static_analyzer import AdvancedStaticAnalyzer 
-        from evaluators.runtime_analyzer import RuntimeProfiler
+        from evaluators.runtime_analyzer import RuntimeProfiler 
+
         static_analyzer = AdvancedStaticAnalyzer() 
         compilation_evaluator = KernelModuleCompiler()
         security_evaluator = KernelVulnerabilityScanner()
@@ -80,5 +78,4 @@ if __name__ == "__main__":
     evaluation_results = evaluator.evaluate(all_prompt_responses) 
 
     with open("evaluation_results.json", "w") as f:
-        json.dump(evaluation_results, f, indent=4)
-    
+        json.dump(evaluation_results, f, indent=4) 

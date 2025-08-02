@@ -2,4 +2,4 @@
     "kernel_memory_safety": 0.1,
     "kernel_concurrency": 0.85,
     "kernel_api_misuse": 0.6
-}
+} 
